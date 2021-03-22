@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Couch Detail</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+            /* header */
+    .header{
+      width: 100%;
+      background-color: rgb(60, 171, 175);
+    }
+    nav{
+      padding: 15px;
+      width: 80%;
+      margin: 0px auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav>.brand>a{
+      text-decoration: none;
+      font-size: 24px;
+      color: #fff;
+    }
+    nav form input{
+      margin-left: 20px;
+      padding-left: 10px;
+      height: 30px;
+      outline: none;
+    }
+    nav form button{
+      cursor: pointer;
+      color: #fff;
+      border: none;
+      padding: 7px 15px;
+      outline: none;
+      background-color: rgb(96, 97, 102);
+    }
+    nav form button:hover{
+      background-color: rgb(109, 109, 112);
+    }
+
+    .menu{
+      margin-left: 100px;
+    }
+    .menu ul{
+      display: flex;
+    }
+    .menu ul li{
+      list-style: none;
+    }
+    .menu ul li a{
+      text-decoration: none;
+      font-size: 16px;
+      background-color: rgb(96, 97, 102);
+      color: #fff;
+      padding: 10px 15px;
+    }
+    .menu ul li a:hover{
+      background-color: rgb(109, 109, 112);
+    }
+    .list h5{
+      font-size: 18px;
+      color: rgb(60, 171, 175);
+      padding: 15px;
+    }
+    </style>
+
+</head>
+<body>
+
+    <div class="header">
+      <nav>
+        <div class="brand">
+          <a href="dashboard.html">Online Couch Surfing</a>
+        </div>
+  
+        <div class="menu">
+          <ul>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="wishlist.html">Wishlists</a></li>
+            <li><a href="couches.html">Couches</a></li>
+            <li><a href="#">Chat</a></li>
+            <li><a href="index.html">Log out</a></li>
+          </ul>
+        </div>   
+      </nav>
+      </div>
+
+                                <!-- slider -->
+    <div class="parent">
+
+    
+    <div class="slider">
+        <div class="header">
+            <div>
+                <figure>
+                    <div class="slider">
+                        <img src="resource/apartment1.jpg" alt="Apartment 1">
+                    </div>
+                    <div class="slider">
+                        <img src="resource/apartment2.jpg" alt="Apartment 2">
+                    </div>
+                    <div class="slider">
+                        <img src="resource/apartment3.jpg" alt="Apartment 3">
+                    </div>
+                    <div class="slider">
+                        <img src="resource/apartment4.jpg" alt="Apartment 4">
+                    </div>
+                    <div class="slider">
+                        <img src="resource/apartment5.jpg" alt="Apartment 5">
+                    </div>
+                </figure>
+            </div>
+    
+            <div class="buttons">
+                <span>Add to Wishlist</span>
+                <span>Delete Post</span>
+            </div>
+        </div>
+
+        <div class="details">                      
+            <div class="title"> 
+                <h3> Title: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod sequi amet </h3>
+            </div>
+            <div class="description">
+                <h4>Couch Details</h4>
+                <P>This Apartment consists of one large room that serves as the combined living, dining, and bedroom.This is a wide apartment in which you can facilitate all kind of relexation.If you have an interest in my apartment then Chat with us or you can also contact us directly: <br>
+                    Phone: +92 300 1234567 </p>
+            </div>
+        </div>
+    
+    </div>
+
+    <div class="right">
+        <div class="top">
+            <div class="owner_profile">
+                <div class="dp">
+                    <img src="resource/user.png" alt="userprofile">
+                </div>
+                <div class="details">
+                    <h5>Saif Ullah</h5>
+                </div>
+            </div>
+            <span>Category: Free</span>
+            <a href="#">Chat with Owner</a>
+        </div>
+        <div class="bottom">
+            <h4>Location</h4>
+            <div class="map">
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+</body>
+</html> 

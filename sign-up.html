@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style1.css">
+    <title>Sign-up</title>
+    <style>
+h1{
+    text-align: center;
+    margin: 0px;
+    padding-bottom: 20px;
+    font-size: 22px;
+}
+.signupbox .form{
+    padding: 30px 15px 15px;
+    color: white;
+    width: 40%;
+    margin: 0px auto;
+
+}
+.signupbox{
+    background-color: rgb(96, 97, 102);
+}
+
+.signupbox label{
+    margin: 0px;
+    padding: 0px;
+    color: #fff;
+    font-weight: bold;
+}
+.signupbox input{
+    width: 100%;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 20px;
+    color: #fff;
+    font-size: 16px;
+}
+.signupbox button
+{
+    border: none;
+    outline: none;
+    width: 80%;
+    height: 40px;
+    color: #fff;
+    background: rgb(83, 225, 230);
+    font-size: 18px;
+    border-radius: 20px;
+    transition: .5s ease-in-out;
+    margin-left: 60px;
+}
+
+.signupbox button:hover{
+    background: rgb(63, 185, 189);
+    cursor: pointer;
+    transform: scale(1.03,1.03);
+
+}
+.radioBtn{
+    display: flex;
+    flex-direction: column;
+}
+
+.radioBtn div{
+    display: flex
+}
+.radioBtn div span{
+    display: flex;
+}
+.radioBtn span label{
+    line-height: 35px;
+}
+.radioBtn input{
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+    margin: 10px;
+}
+input[ type="radio"]{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+input[ type="radio"] label{
+    margin: 0px 15px;
+    height: 38px;
+    display: inline-block;
+}
+
+.checkbox{
+    display: flex;
+}
+.checkbox input{
+    width: 20px;
+    height: 16px;
+}
+    </style>
+</head>
+<body>
+        <div class= "signupbox">
+
+             <div class="form">
+                 <h1>Couch Surfing</h1>
+                 <form action="signup.php" method="POST">
+                     <label for="fname">First Name</label>
+                     <input type="text" name="fname" id="fname" placeholder="First Name" required>
+
+                     <label for="lname">Last name Name</label>
+                     <input type="text" name="lname" id="lname" placeholder="Last Name" required>
+
+                     <label for="username">Username</label>
+                     <input type="text" name="username" id="username" placeholder="johndoe12" required>
+
+                     <label for="email">Email</label>
+                     <input type="Email" name="email" id="email" placeholder="example@gmail.com" required>
+
+                     <label for="password">Password</label>
+                     <input id="password" type="Password" name="password" placeholder="********" required>
+                     
+                     <label for="telphone">Phone number</label>
+                     <input id="telphone" type="tel" name="telphone" placeholder="Phone Number" required>
+
+                     <label for="address">Address</label>
+                     <input id="address" type="text" name="address" placeholder="address" required>
+                     
+                     <label for="city">Select city:</label>
+                     <input id="city" type="text" name="city" placeholder="your city name here" required>
+
+                     <div class="radioBtn">    
+                        <label for="gender">Select your gender</label>
+                                                
+                        <div>
+                            <span>
+                                <input type="radio" name="gender" id="male" value="male" required>
+                                <label for="male">Male</label>
+                            </span>
+
+                            <span>
+                                <input type="radio" name="gender" id="female" value="female" required>
+                                <label for="female">Female</label>
+                            </span>
+                        </div>
+                     </div>
+
+                    <div class="checkbox">
+                        <input type="checkbox" name="agreement" id="agreement" required>
+                        <label for="agreement">I Agree the terms and services</label>
+                    </div>
+
+                    <button type="submit">Create Account</button>
+                    
+                 </form>
+                </div>
+        </div> 
+</body>
+</html>

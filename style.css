@@ -1,0 +1,500 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(96, 97, 102);
+}
+
+
+/* login form */
+
+h1
+{
+    text-align: center;
+    margin: 0px;
+    padding-bottom: 20px;
+    font-size: 22px;
+}
+.loginbox .form{
+    padding: 100px 15px 15px;
+    color: white;
+    width: 40%;
+    margin: 0px auto;
+
+}
+input{
+    display: block;
+}
+.loginbox{
+    background-color: rgb(96, 97, 102);
+    width: 100vw;
+}
+.loginbox div{
+     height: 100vh;
+}
+.loginbox input{
+    margin: 0px;
+    padding: 0px;
+    font-weight: bold;
+}
+.loginbox label{
+    margin: 0px;
+    padding: 0px;
+    color: #fff;
+    font-weight: bold;
+}
+.loginbox input{
+    width: 100%;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 30px;
+    color: #fff;
+    font-size: 16px;
+}
+.loginbox input[ type="submit"], .loginbox input[type="button"]
+{
+    border: none;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    background: rgb(83, 225, 230);
+    font-size: 18px;
+    border-radius: 20px;
+    margin-top: 10px;
+    transition: .5s ease-in-out;
+}
+
+.loginbox input[type="submit"]:hover{
+    background: rgb(63, 185, 189);
+    cursor: pointer;
+    transform: scale(1.03,1.03);
+
+}
+.loginbox input[type="button"]:hover{
+    background: rgb(63, 185, 189);
+    cursor: pointer;
+    transform: scale(1.03,1.03);
+
+}
+.loginbox a {
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+.loginbox a:hover {
+    color: rgb(63, 185, 189);
+}
+
+    /* signup form */
+h1{
+    text-align: center;
+    margin: 0px;
+    padding-bottom: 20px;
+    font-size: 22px;
+}
+.signupbox .form{
+    padding: 30px 15px 15px;
+    color: white;
+    width: 40%;
+    margin: 0px auto;
+
+}
+.signupbox{
+    background-color: rgb(96, 97, 102);
+}
+
+.signupbox label{
+    margin: 0px;
+    padding: 0px;
+    color: #fff;
+    font-weight: bold;
+}
+.signupbox input{
+    width: 100%;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 20px;
+    color: #fff;
+    font-size: 16px;
+}
+.signupbox button
+{
+    border: none;
+    outline: none;
+    width: 80%;
+    height: 40px;
+    color: #fff;
+    background: rgb(83, 225, 230);
+    font-size: 18px;
+    border-radius: 20px;
+    transition: .5s ease-in-out;
+    margin-left: 60px;
+}
+
+.signupbox button:hover{
+    background: rgb(63, 185, 189);
+    cursor: pointer;
+    transform: scale(1.03,1.03);
+
+}
+.radioBtn{
+    display: flex;
+    flex-direction: column;
+}
+
+.radioBtn div{
+    display: flex
+}
+.radioBtn div span{
+    display: flex;
+}
+.radioBtn span label{
+    line-height: 35px;
+}
+.radioBtn input{
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+    margin: 10px;
+}
+input[ type="radio"]{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+input[ type="radio"] label{
+    margin: 0px 15px;
+    height: 38px;
+    display: inline-block;
+}
+
+.checkbox{
+    display: flex;
+}
+.checkbox input{
+    width: 20px;
+    height: 16px;
+}
+
+                                /* forget password */
+
+
+p{
+    margin-top: 30px;
+    font-size: 16px;
+    color: #fff;
+    padding-bottom: 20px;
+ }
+ .fpassword{
+     margin: 100px auto;
+     width: 50vw;
+    color: #fff;
+    padding-top: 50px;
+    padding-left: 100px;
+   
+ }
+
+.fpassword input[type="submit"]{
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 80%;
+    color: #fff;
+    background: rgb(83, 225, 230);
+    font-size: 18px;
+    border-radius: 20px;
+    transition: .5s ease-in-out;
+    margin-left:  60px;
+}
+.fpassword input[type="submit"]:hover{
+    background: rgb(63, 185, 189);
+    cursor: pointer;
+    transform: scale(1.03,1.03);
+}
+.fpassword input{
+    width: 100%;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 30px;
+    color: #fff;
+    font-size: 16px;
+}
+.fpassword label{
+    margin: 0px;
+    padding: 0px;
+    color: #fff;
+    font-weight: bold;
+}
+::placeholder{
+    color: rgb(170, 170, 170);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
+
+
+
+
+                               /* add couch */
+
+
+
+.addcouch{
+    margin-top: 30px;
+    font-size: 16px;
+    color: #fff;
+    padding-bottom: 20px;
+}
+.addcouch{
+    margin: 100px auto;
+    width: 50vw;
+   color: #fff;
+   padding-top: 50px;
+   padding-left: 100px;
+  
+}
+.addcouch input{
+    width: 100%;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 30px;
+    color: #fff;
+    font-size: 16px;
+}
+textarea{
+    background-color: rgb(96, 97, 102);
+    color: #fff;
+    border: none;
+    border-bottom: 2px solid #fff;
+    background: transparent;
+    outline: none;
+}
+select{
+    background-color: rgb(96, 97, 102);
+    color: #fff;
+    height: 30px;
+    width: 100px;
+}
+input[type="file"]{
+    font-size: 14px;
+}
+.addcouch input[type="submit"]{
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 80%;
+    color: #fff;
+    background: rgb(83, 225, 230);
+    font-size: 18px;
+    border-radius: 20px;
+    transition: .5s ease-in-out;
+    margin-left:  60px;
+}
+.addcouch input[type="submit"]:hover{
+    background: rgb(63, 185, 189);
+    cursor: pointer;
+    transform: scale(1.03,1.03);
+
+}
+                                    /*add couch details */
+
+div.parent{
+    display: grid;
+    grid-template-columns: auto 20%;
+}
+
+.slider{
+overflow: hidden;
+padding: 15px;
+display: grid;
+grid-template-rows: 300px auto;
+}
+
+.slider .header{
+    overflow: hidden;
+    background-color: #fff;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 150px;
+}
+.buttons{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    height: 90%;
+}
+.buttons span{
+    display: inline-block;
+    padding: 15px;
+    color: rgb(83, 225, 230);
+}
+
+ .slider figure div{
+float: left;
+ width: 20%;
+}
+ .slider figure img{
+ border-radius: 20px;
+ width: 100%;
+ float: left;
+ height: 90%;
+ opacity: 0.7;
+}
+.slider figure img:hover{
+    opacity: 0.5;
+}
+
+ .slider figure{
+position: relative;
+width: 500%;
+margin: 0px;
+left: 0;
+animation: 50s cubic-bezier(0.075, 0.82, 0.165, 1) slider infinite;
+}
+
+
+
+.right{
+    height: 100vh;
+    background-color: #f3f2f2;
+    padding: 20px 15px;
+}
+.right .top{
+    display: flex;
+    flex-direction: column;
+}
+.right .top span{
+    color: #fff;
+    width: 100%;
+    background-color: rgb(83, 225, 230);
+    padding: 10px 15px;
+    margin: 2px;
+}
+.right .top a{
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+    background-color: rgb(83, 225, 230);
+    padding: 10px 15px;
+    margin: 2px;
+}
+.right .top a:hover{
+    background-color: rgb(63, 176, 180);
+}
+.right .owner_profile{
+    width: 100%;
+}
+.right .owner_profile .dp{
+    width: 50%;
+    margin: 0px auto;
+}
+
+.right .owner_profile img{
+    width: 100%;
+    margin: 0px auto;
+}
+
+.right .owner_profile .details{
+    padding-top: 20px;
+    text-align: center;
+}
+
+.right .bottom h4{
+    padding-top: 10px;   
+}
+.bottom .map{
+    margin-top: 20px;
+    height: 250px;
+    background-color: rgb(83, 225, 230);
+}
+
+@keyframes slider{
+0%{ 
+  left: 0%;
+}
+ 10%{
+ left: 0%;
+ }
+ 12%{
+left: -100%;
+ }
+ 22%{
+left: -100%;
+ }
+ 24%{
+left: -200%;
+ }
+ 34%{
+  left: -200%;
+ }
+36%{
+ left: -300%;
+}
+46%{
+left: -300%;
+}
+ 48%{
+ left: -400%;
+}
+58%{
+left: -400%;
+}
+60%{
+left: -300%;
+}
+70%{
+left: -300%;
+}
+72%{
+left: -200%;
+}
+82%{
+ left: -200%;
+}
+84%{
+left: -100%;
+}
+ 94%{
+ left: -100%;
+}
+96%{
+left: -0%;
+}
+}
+
+.details {
+    display: grid;
+    grid-template-rows: 50px auto;
+}
+.details .title{
+    padding: 10px 15px;
+    text-align: left!important;
+}
+.details .description{
+    padding: 10px 15px;
+}
+
+/* Saif's Turn */
+
+/* wishlist */

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Couches</title>
+  <link rel="stylesheet" href="style1.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+  <style>
+
+    .list{
+      width: 80%;
+      margin: 0px auto;
+    }
+    .list ul{
+      display: flex;
+      flex-direction: column;
+    }
+    .list ul li{
+      list-style: none;
+    }
+    li .listItem{
+      background-color: #fff;
+      margin: 10px;
+      padding: 15px;
+      border-radius: 15px;
+    }
+    .listItem{
+      display: flex;
+
+    }
+    .listItem .thumbnail{
+      width: 250px;
+    }
+    .listItem .thumbnail img{
+      width: 100%;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+    }
+
+    .listItem .details{
+      width: 100%;
+      position: relative;
+      margin-left: 20px;
+    }
+    .details #date{
+      position: absolute;
+      top: 0px;
+      right: 0px;
+    }
+    .details .actions{
+      margin-top: 20px;
+    }
+    .details .actions a{
+      border-radius: 5px;
+      padding: 10px 15px;
+      background-color: rgb(63, 185, 189);
+      color: #fff;
+      text-decoration: none;
+    }
+    .details .actions a:hover{
+      background-color: rgb(60, 171, 175);
+    }
+
+    .header{
+      width: 100%;
+      background-color: rgb(60, 171, 175);
+    }
+    nav{
+      padding: 15px;
+      width: 80%;
+      margin: 0px auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav>.brand>a{
+      text-decoration: none;
+      font-size: 24px;
+      color: #fff;
+    }
+    nav form input{
+      margin-left: 20px;
+      padding-left: 10px;
+      height: 30px;
+      outline: none;
+    }
+    nav form button{
+      cursor: pointer;
+      color: #fff;
+      border: none;
+      padding: 7px 15px;
+      outline: none;
+      background-color: rgb(96, 97, 102);
+    }
+    nav form button:hover{
+      background-color: rgb(109, 109, 112);
+    }
+
+    .menu{
+      margin-left: 100px;
+    }
+    .menu ul{
+      display: flex;
+    }
+    .menu ul li{
+      list-style: none;
+    }
+    .menu ul li a{
+      text-decoration: none;
+      font-size: 16px;
+      background-color: rgb(96, 97, 102);
+      color: #fff;
+      padding: 10px 15px;
+    }
+    .menu ul li a:hover{
+      background-color: rgb(109, 109, 112);
+    }
+    .list h5{
+      font-size: 18px;
+      color: rgb(60, 171, 175);
+      padding: 15px;
+    }
+
+    form{
+      width: 78%;
+      margin: 10px auto;
+    }
+
+    .boxcontainer{
+      overflow: hidden;
+      border: 1px solid #3695d4;
+      border-radius: 20px;
+      background-color: #fff;
+
+  }
+
+.elementcontainer{
+  display: grid;
+  grid-template-columns: auto 50px;
+}
+.search{
+    margin: 5px 10px;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 0px 10px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-family: Arial;
+    margin-right: 200px;
+}
+
+.material-icons{
+    text-align: center;
+    background-color: rgb(63, 185, 189);
+    font-size: 26px;
+    color: #fff;
+    cursor: pointer;
+}
+.material-icons:hover{
+  background-color: rgb(60, 171, 175);
+}
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <nav>
+      <div class="brand">
+        <a href="dashboard.html">Online Couch Surfing</a>
+      </div>
+
+      <div class="menu">
+        <ul>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="wishlist.html">Wishlists</a></li>
+          <li><a href="couches.html">Couches</a></li>
+          <li><a href="#">Chat</a></li>
+          <li><a href="index.html">Log out</a></li>
+        </ul>
+      </div>   
+    </nav>
+  </div>
+
+  <form action="search">  
+      <div class="boxcontainer">
+        <div class="elementcontainer" >
+          <input type="text" placeholder="You Can Search Here." name="search" class="search"></td>
+          <span class="material-icons md-48">search</span>
+        </div>
+      </div>
+  </form>
+
+  <div class="couches">
+    <div class="list">
+      <h5>My Ads</h5>
+      <ul>
+        <li>
+          <div class="listItem">
+            <div class="thumbnail">
+              <img src="resource/apartment1.jpg" alt="">
+            </div>
+            <div class="details">
+              <h4 class="title">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h4>
+              <span id="date">19 Jan</span>
+  
+              <div class="actions">
+                <a href="couchdetail.html">View</a>
+                <a href="#">Remove</a>
+              </div>
+            </div>
+  
+          </div>
+        </li>
+        <li>
+          <div class="listItem">
+            <div class="thumbnail">
+              <img src="resource/apartment2.jpg" alt="">
+            </div>
+            <div class="details">
+              <h4 class="title">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h4>
+              <span id="date">24 Jan</span>
+  
+              <div class="actions">
+                <a href="#">View</a>
+                <a href="">Remove</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="listItem">
+            <div class="thumbnail">
+              <img src="resource/apartment3.jpg" alt="">
+            </div>
+            <div class="details">
+              <h4 class="title">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h4>
+              <span id="date">20 Jan</span>
+  
+              <div class="actions">
+                <a href="#">View</a>
+                <a href="">Remove</a>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+</body>
+</html>
