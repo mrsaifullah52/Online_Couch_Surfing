@@ -67,10 +67,15 @@ if( !empty($username) && !empty($fname) && !empty($lname) && !empty($email) && !
   $result=mysqli_query($conn, $sql);
 
   if($result){
-    echo "Account Created Successfully";
+    session_start();
+    $_SESSION["username"]=$username;
+    $_SESSION["name"]=$fname;
+
+    echo "Account Created Successfully</br>";
+    echo "<script> window.location.replace('dashboard.php') </script>";
   }else{
-    echo "Failed to Sign up, Try again!!";
-    echo "Something Went Wrong" . $sql . mysqli_error($conn);
+    echo "Failed to Sign up, Try again!!</br></br>";
+    echo "Something Went Wrong</br>" . mysqli_error($conn);
   }
 }
 

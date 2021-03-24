@@ -124,7 +124,9 @@
   </style>
 </head>
 <body>
-  
+  <?php
+session_start(); 
+  ?>
   <div class="header">
     <nav>
       <div class="brand">
@@ -133,18 +135,21 @@
 
       <div class="menu">
         <ul>
-          <li><a href="profile.html">Profile</a></li>
+          <li><a href="profile.html">
+          <?php
+            if(isset($_SESSION['name'])){
+              echo $_SESSION["name"];
+            }else{
+              echo "<script>window.location.replace('index.php')</script>";
+            }?>
+          </a></li>
           <li><a href="wishlist.html">Wishlists</a></li>
           <li><a href="#">Couches</a></li>
           <li><a href="#">Chat</a></li>
-          <li><a href="index.html">Log out</a></li>
+          <li><a href="logout.php">Log out</a></li>
         </ul>
       </div>
 
-      <!-- <form action="search">
-        <input type="text" name="search" id="search" placeholder="Search for Couch">
-        <button type="button">Search</button>
-      </form> -->
     </nav>
   </div>
 

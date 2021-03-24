@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+
+if(isset($_SESSION['username'])){
+    echo "<script> window.location.replace('dashboard.php')</script>";
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,18 +110,19 @@ input{
         <div class="form">
                 <h1>Couch Surfing</h1>    
         
-            <form action="">
+            <form action="login.php" method="POST">
+                
                     <label for="Email">Email</label>
-                    <input id="Email" type="Email" name="Email" placeholder="example@gmail.com">
+                    <input id="email" type="Email" name="Email" placeholder="example@gmail.com" required autocomplete="off">
             
                     <label for="Password">Password</label>
-                    <input id="password" type="Password" name="Password" placeholder="********">
+                    <input id="password" type="Password" name="Password" placeholder="********" required autocomplete="off">
             
                     <a href="forgetpassword.html">Forget password?</a>
-                    <input type="button" value="Sign-in" onclick="window.location.replace('dashboard.html')">
+                    <input type="submit" value="Sign-in">
                     <input type="button" value="Create New Account" onclick="window.location.replace('sign-up.html')">
             </form>    
-        </div>
+        </div> 
     </div>
     
 </body>
