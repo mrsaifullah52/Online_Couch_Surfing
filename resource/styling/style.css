@@ -256,66 +256,6 @@ p{
 
 
 
-.addcouch{
-    margin-top: 30px;
-    font-size: 16px;
-    color: #fff;
-    padding-bottom: 20px;
-}
-.addcouch{
-    margin: 100px auto;
-    width: 50vw;
-   color: #fff;
-   padding-top: 50px;
-   padding-left: 100px;
-  
-}
-.addcouch input{
-    width: 100%;
-    margin-bottom: 20px;
-    border: none;
-    border-bottom: 1px solid #fff;
-    background: transparent;
-    outline: none;
-    height: 30px;
-    color: #fff;
-    font-size: 16px;
-}
-textarea{
-    background-color: rgb(96, 97, 102);
-    color: #fff;
-    border: none;
-    border-bottom: 2px solid #fff;
-    background: transparent;
-    outline: none;
-}
-select{
-    background-color: rgb(96, 97, 102);
-    color: #fff;
-    height: 30px;
-    width: 100px;
-}
-input[type="file"]{
-    font-size: 14px;
-}
-.addcouch input[type="submit"]{
-    border: none;
-    outline: none;
-    height: 40px;
-    width: 80%;
-    color: #fff;
-    background: rgb(83, 225, 230);
-    font-size: 18px;
-    border-radius: 20px;
-    transition: .5s ease-in-out;
-    margin-left:  60px;
-}
-.addcouch input[type="submit"]:hover{
-    background: rgb(63, 185, 189);
-    cursor: pointer;
-    transform: scale(1.03,1.03);
-
-}
                                     /*add couch details */
 
 div.parent{
@@ -372,8 +312,6 @@ margin: 0px;
 left: 0;
 animation: 50s cubic-bezier(0.075, 0.82, 0.165, 1) slider infinite;
 }
-
-
 
 .right{
     height: 100vh;

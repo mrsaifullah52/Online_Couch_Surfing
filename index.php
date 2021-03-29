@@ -19,9 +19,7 @@ if(isset($_SESSION['username'])){
     <link rel="stylesheet" href="style1.css">
     <title>Couch surfing</title>
     <style>
-
- h1
-{
+h1{
     text-align: center;
     margin: 0px;
     padding-bottom: 20px;

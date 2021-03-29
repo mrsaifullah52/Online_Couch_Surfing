@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashbaord</title>
-
+  <title>Couches</title>
   <link rel="stylesheet" href="resource/styling/style1.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
 <body>
 
@@ -14,7 +15,18 @@
   include 'components/header.php';
 ?> 
 
-<div class="couches">
+  <form action="search">  
+      <div class="boxcontainer">
+        <div class="elementcontainer" >
+          <input type="text" placeholder="You Can Search Here." name="search" class="search"></td>
+          <span class="material-icons md-48">search</span>
+        </div>
+
+        <a href="addcouch.php">Add Couch</a>
+      </div>
+  </form>
+
+  <div class="couches">
     <div class="list">
       <h5>My Ads</h5>
       <ul>
