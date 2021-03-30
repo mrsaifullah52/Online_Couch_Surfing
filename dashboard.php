@@ -11,13 +11,31 @@
 <body>
 
 <?php
+  include 'config/db.php';
   include 'components/header.php';
 ?> 
 
-<div class="couches">
+<div class="dashboard">
     <div class="list">
       <h5>My Ads</h5>
       <ul>
+
+      <?php
+      $query_statement="SELECT `id`, `title`, `timestamp` FROM `couches` WHERE `username`='".$_SESSION['username']."' ";
+      $result = mysqli_query($conn, $query_statement);
+      $couches = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+
+      $count = mysqli_num_rows($result);
+      if($count >= 1){
+        foreach($couches as $couch){
+          // echo $couch->title;
+        }
+      }else{
+        echo "Result not found.";
+      }
+      
+      ?>
         <li>
           <div class="listItem">
             <div class="thumbnail">
@@ -32,10 +50,11 @@
                 <a href="#">Remove</a>
               </div>
             </div>
-  
           </div>
         </li>
-        <li>
+
+
+        <!-- <li>
           <div class="listItem">
             <div class="thumbnail">
               <img src="resource/apartment2.jpg" alt="">
@@ -66,7 +85,7 @@
               </div>
             </div>
           </div>
-        </li>
+        </li> -->
       </ul>
     </div>
   </div>

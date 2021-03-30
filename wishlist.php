@@ -14,10 +14,9 @@
   include 'components/header.php';
 ?> 
 
-  <h1>Wishlists</h1>
-
-
-  <div class="list">
+<div class="wishlist">
+<div class="list">
+      <h5>My Wishlists</h5>
     <ul>
       <li>
         <div class="listItem">
@@ -70,6 +69,7 @@
       </li>
     </ul>
   </div>
+</div>
 
 </body>
 </html>

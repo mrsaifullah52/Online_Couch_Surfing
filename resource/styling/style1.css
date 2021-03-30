@@ -10,6 +10,8 @@ body{
   background-color: rgb(96, 97, 102);
 }
 
+
+/* header section */
 .header{
   width: 100%;
   background-color: rgb(60, 171, 175);
@@ -65,7 +67,7 @@ nav form button:hover{
   background-color: rgb(109, 109, 112);
 }
 
-/* dashboard */
+/* list of couches */
 .list{
   width: 80%;
   margin: 0px auto;
@@ -120,8 +122,14 @@ li .listItem{
   background-color: rgb(60, 171, 175);
 }
 
-
 .list h5{
+  font-size: 18px;
+  color: rgb(60, 171, 175);
+  padding: 15px;
+}
+
+/* dashboard */
+.dashboard .list h5{
   font-size: 18px;
   color: rgb(60, 171, 175);
   padding: 15px;
@@ -178,135 +186,12 @@ li .listItem{
   background-color: rgb(60, 171, 175);
 }
 
-
-.profile .list h5{
-  font-size: 18px;
-  color: rgb(60, 171, 175);
-  padding: 15px;
-}
-
 /* wishlist */
-h1{
-  padding-top: 50px;
-  text-align: center;
-}
-.list{
-  width: 80%;
-  margin: 0px auto;
-}
-.list ul{
-  display: flex;
-  flex-direction: column;
-}
-.list ul li{
-  list-style: none;
-}
-li .listItem{
-  background-color: #fff;
-  margin: 10px;
-  padding: 15px;
-  border-radius: 15px;
-}
-.listItem{
-  display: flex;
 
-}
-.listItem .thumbnail{
-  width: 250px;
-}
-.listItem .thumbnail img{
-  width: 100%;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-}
-
-.listItem .details{
-  width: 100%;
-  position: relative;
-  margin-left: 20px;
-}
-.details #date{
-  position: absolute;
-  top: 0px;
-  right: 0px;
-}
-.details .actions{
-  margin-top: 20px;
-}
-.details .actions a{
-  border-radius: 5px;
-  padding: 10px 15px;
-  background-color: rgb(63, 185, 189);
-  color: #fff;
-  text-decoration: none;
-}
-.details .actions a:hover{
-  background-color: rgb(60, 171, 175);
-}
 
 
 /* couches page */
-.list{
-  width: 80%;
-  margin: 0px auto;
-}
-.list ul{
-  display: flex;
-  flex-direction: column;
-}
-.list ul li{
-  list-style: none;
-}
-li .listItem{
-  background-color: #fff;
-  margin: 10px;
-  padding: 15px;
-  border-radius: 15px;
-}
-.listItem{
-  display: flex;
-
-}
-.listItem .thumbnail{
-  width: 250px;
-}
-.listItem .thumbnail img{
-  width: 100%;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-}
-
-.listItem .details{
-  width: 100%;
-  position: relative;
-  margin-left: 20px;
-}
-.details #date{
-  position: absolute;
-  top: 0px;
-  right: 0px;
-}
-.details .actions{
-  margin-top: 20px;
-}
-.details .actions a{
-  border-radius: 5px;
-  padding: 10px 15px;
-  background-color: rgb(63, 185, 189);
-  color: #fff;
-  text-decoration: none;
-}
-.details .actions a:hover{
-  background-color: rgb(60, 171, 175);
-}
-
-.list h5{
-  font-size: 18px;
-  color: rgb(60, 171, 175);
-  padding: 15px;
-}
-
-form{
+.couches form{
   width: 78%;
   margin: 10px auto;
 }
@@ -384,6 +269,7 @@ background-color: rgb(60, 171, 175);
   border-bottom: 2px solid #fff;
   background: transparent;
   outline: none;
+  width: 100%!important;
 }
 .addcouch select{
   background-color: rgb(96, 97, 102);
@@ -411,4 +297,267 @@ background-color: rgb(60, 171, 175);
   cursor: pointer;
   transform: scale(1.03,1.03);
 
+}
+
+/* view couches page */
+
+div.parent{
+  display: grid;
+  grid-template-columns: auto 20%;
+}
+
+.slider{
+overflow: hidden;
+padding: 15px;
+display: grid;
+grid-template-rows: 300px auto;
+}
+
+.slider .header{
+  overflow: hidden;
+  background-color: #fff;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 150px;
+}
+.buttons{
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  height: 90%;
+}
+.buttons span{
+  display: inline-block;
+  padding: 15px;
+  color: rgb(83, 225, 230);
+}
+
+.slider figure div{
+float: left;
+width: 20%;
+}
+.slider figure img{
+border-radius: 20px;
+width: 100%;
+float: left;
+height: 90%;
+opacity: 0.7;
+}
+.slider figure img:hover{
+  opacity: 0.5;
+}
+
+.slider figure{
+position: relative;
+width: 500%;
+margin: 0px;
+left: 0;
+animation: 50s cubic-bezier(0.075, 0.82, 0.165, 1) slider infinite;
+}
+
+.right{
+  height: 100vh;
+  background-color: #f3f2f2;
+  padding: 20px 15px;
+}
+.right .top{
+  display: flex;
+  flex-direction: column;
+}
+.right .top span{
+  color: #fff;
+  width: 100%;
+  background-color: rgb(83, 225, 230);
+  padding: 10px 15px;
+  margin: 2px;
+}
+.right .top a{
+  text-decoration: none;
+  color: #fff;
+  display: inline-block;
+  background-color: rgb(83, 225, 230);
+  padding: 10px 15px;
+  margin: 2px;
+}
+.right .top a:hover{
+  background-color: rgb(63, 176, 180);
+}
+.right .owner_profile{
+  width: 100%;
+}
+.right .owner_profile .dp{
+  width: 50%;
+  margin: 0px auto;
+}
+
+.right .owner_profile img{
+  width: 100%;
+  margin: 0px auto;
+}
+
+.right .owner_profile .details{
+  padding-top: 20px;
+  text-align: center;
+}
+
+.right .bottom h4{
+  padding-top: 10px;   
+}
+.bottom .map{
+  margin-top: 20px;
+  height: 250px;
+  background-color: rgb(83, 225, 230);
+}
+
+@keyframes slider{
+0%{ 
+left: 0%;
+}
+10%{
+left: 0%;
+}
+12%{
+left: -100%;
+}
+22%{
+left: -100%;
+}
+24%{
+left: -200%;
+}
+34%{
+left: -200%;
+}
+36%{
+left: -300%;
+}
+46%{
+left: -300%;
+}
+48%{
+left: -400%;
+}
+58%{
+left: -400%;
+}
+60%{
+left: -300%;
+}
+70%{
+left: -300%;
+}
+72%{
+left: -200%;
+}
+82%{
+left: -200%;
+}
+84%{
+left: -100%;
+}
+94%{
+left: -100%;
+}
+96%{
+left: -0%;
+}
+}
+
+.details {
+  display: grid;
+  grid-template-rows: 50px auto;
+}
+.details .title{
+  padding: 10px 15px;
+  text-align: left!important;
+}
+.details .description{
+  padding: 10px 15px;
+}
+
+/* login page */
+.loginbox{
+  background-color: rgb(96, 97, 102);
+  width: 100vw;
+}
+.loginbox h1{
+  text-align: center;
+  margin: 0px;
+  padding-bottom: 20px;
+  font-size: 22px;
+}
+.loginbox .form{
+  padding: 100px 15px 15px;
+  color: white;
+  width: 40%;
+  margin: 0px auto;
+}
+.loginbox .form form{
+  display: flex;
+  flex-direction: column;
+}
+.loginbox input{
+  display: block;
+}
+
+.loginbox div{
+   height: 100vh;
+}
+.loginbox input{
+  margin: 0px;
+  padding: 10px;
+  font-weight: bold;
+}
+.loginbox label{
+  margin: 0px;
+  padding: 0px;
+  color: #fff;
+  font-weight: bold;
+}
+.loginbox input{
+  width: 100%;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  outline: none;
+  height: 30px;
+  color: #fff;
+  font-size: 16px;
+}
+.loginbox input[ type="submit"], .loginbox input[type="button"]
+{
+  border: none;
+  outline: none;
+  height: 40px;
+  color: #fff;
+  background: rgb(83, 225, 230);
+  font-size: 18px;
+  border-radius: 20px;
+  margin-top: 10px;
+  transition: .5s ease-in-out;
+}
+
+.loginbox input[type="submit"]:hover{
+  background: rgb(63, 185, 189);
+  cursor: pointer;
+  transform: scale(1.03,1.03);
+
+}
+.loginbox input[type="button"]:hover{
+  background: rgb(63, 185, 189);
+  cursor: pointer;
+  transform: scale(1.03,1.03);
+
+}
+.loginbox a {
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 20px;
+  color: #fff;
+  font-weight: bold;
+}
+.loginbox a:hover {
+  color: rgb(63, 185, 189);
 }

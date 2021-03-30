@@ -4,97 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Couch Detail</title>
-    <link rel="stylesheet" href="resource/styling/style.css">
-
-    <style>
-            /* header */
-    .header{
-      width: 100%;
-      background-color: rgb(60, 171, 175);
-    }
-    nav{
-      padding: 15px;
-      width: 80%;
-      margin: 0px auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    nav>.brand>a{
-      text-decoration: none;
-      font-size: 24px;
-      color: #fff;
-    }
-    nav form input{
-      margin-left: 20px;
-      padding-left: 10px;
-      height: 30px;
-      outline: none;
-    }
-    nav form button{
-      cursor: pointer;
-      color: #fff;
-      border: none;
-      padding: 7px 15px;
-      outline: none;
-      background-color: rgb(96, 97, 102);
-    }
-    nav form button:hover{
-      background-color: rgb(109, 109, 112);
-    }
-
-    .menu{
-      margin-left: 100px;
-    }
-    .menu ul{
-      display: flex;
-    }
-    .menu ul li{
-      list-style: none;
-    }
-    .menu ul li a{
-      text-decoration: none;
-      font-size: 16px;
-      background-color: rgb(96, 97, 102);
-      color: #fff;
-      padding: 10px 15px;
-    }
-    .menu ul li a:hover{
-      background-color: rgb(109, 109, 112);
-    }
-    .list h5{
-      font-size: 18px;
-      color: rgb(60, 171, 175);
-      padding: 15px;
-    }
-    </style>
+    <title>Add Couch</title>
+    <link rel="stylesheet" href="resource/styling/style1.css">
 
 </head>
 <body>
 
-    <div class="header">
-      <nav>
-        <div class="brand">
-          <a href="dashboard.html">Online Couch Surfing</a>
-        </div>
-  
-        <div class="menu">
-          <ul>
-            <li><a href="profile.html">Profile</a></li>
-            <li><a href="wishlist.html">Wishlists</a></li>
-            <li><a href="couches.html">Couches</a></li>
-            <li><a href="#">Chat</a></li>
-            <li><a href="index.html">Log out</a></li>
-          </ul>
-        </div>   
-      </nav>
-      </div>
-
-                                <!-- slider -->
+<?php
+  include 'components/header.php';
+?> 
+    <!-- slider -->
     <div class="parent">
 
-    
+  
     <div class="slider">
         <div class="header">
             <div>

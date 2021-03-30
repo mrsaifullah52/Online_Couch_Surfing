@@ -15,6 +15,7 @@
   include 'components/header.php';
 ?> 
 
+<div class="couches">
   <form action="search">  
       <div class="boxcontainer">
         <div class="elementcontainer" >
@@ -28,7 +29,7 @@
 
   <div class="couches">
     <div class="list">
-      <h5>My Ads</h5>
+      <h5>Couches (Ads)</h5>
       <ul>
         <li>
           <div class="listItem">
@@ -83,5 +84,6 @@
     </div>
   </div>
   
+  </div>
 </body>
 </html>
