@@ -23,69 +23,35 @@
       <?php
       $query_statement="SELECT `id`, `title`, `timestamp` FROM `couches` WHERE `username`='".$_SESSION['username']."' ";
       $result = mysqli_query($conn, $query_statement);
-      $couches = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
 
       $count = mysqli_num_rows($result);
+
       if($count >= 1){
-        foreach($couches as $couch){
-          // echo $couch->title;
+        foreach($result as $couch){
+          echo '
+          <li>
+          <div class="listItem">
+            <div class="thumbnail">
+              <img src="resource/images/apartment1.jpg" alt="">
+            </div>
+            <div class="details">
+              <h4 class="title">'.$couch['title'].'</h4>
+              <span id="date">'.$couch['timestamp'].'</span>
+  
+              <div class="actions">
+                <a href="couchdetail.php?id='.$couch['id'].'">View</a>
+                <a href="#'.$couch['id'].'">Remove</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        ';
         }
       }else{
         echo "Result not found.";
       }
       
       ?>
-        <li>
-          <div class="listItem">
-            <div class="thumbnail">
-              <img src="resource/apartment1.jpg" alt="">
-            </div>
-            <div class="details">
-              <h4 class="title">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h4>
-              <span id="date">19 Jan</span>
-  
-              <div class="actions">
-                <a href="couchdetail.html">View</a>
-                <a href="#">Remove</a>
-              </div>
-            </div>
-          </div>
-        </li>
-
-
-        <!-- <li>
-          <div class="listItem">
-            <div class="thumbnail">
-              <img src="resource/apartment2.jpg" alt="">
-            </div>
-            <div class="details">
-              <h4 class="title">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h4>
-              <span id="date">24 Jan</span>
-  
-              <div class="actions">
-                <a href="#">View</a>
-                <a href="">Remove</a>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="listItem">
-            <div class="thumbnail">
-              <img src="resource/apartment3.jpg" alt="">
-            </div>
-            <div class="details">
-              <h4 class="title">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h4>
-              <span id="date">20 Jan</span>
-  
-              <div class="actions">
-                <a href="#">View</a>
-                <a href="">Remove</a>
-              </div>
-            </div>
-          </div>
-        </li> -->
       </ul>
     </div>
   </div>

@@ -18,6 +18,9 @@
 <div class="list">
       <h5>My Wishlists</h5>
     <ul>
+
+
+    
       <li>
         <div class="listItem">
           <div class="thumbnail">
@@ -67,6 +70,9 @@
           </div>
         </div>
       </li>
+
+
+
     </ul>
   </div>
 </div>
