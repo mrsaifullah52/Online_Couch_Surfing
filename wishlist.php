@@ -20,57 +20,47 @@
     <ul>
 
 
-    
-      <li>
-        <div class="listItem">
-          <div class="thumbnail">
-            <img src="resource/apartment1.jpg" alt="">
-          </div>
-          <div class="details">
-            <h4 class="title">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h4>
-            <span id="date">19 Jan</span>
+    <?php
+      include 'config/db.php';
 
-            <div class="actions">
-              <a href="couchdetail.html">View</a>
-              <a href="#">Remove</a>
-            </div>
-          </div>
+      $sql1="SELECT `couchid`, `timestamp` FROM `wishlist` WHERE `username`= '".$_SESSION['username']."' ";
+      $result1 = mysqli_query($conn, $sql1);
 
-        </div>
-      </li>
-      <li>
-        <div class="listItem">
-          <div class="thumbnail">
-            <img src="resource/apartment2.jpg" alt="">
-          </div>
-          <div class="details">
-            <h4 class="title">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h4>
-            <span id="date">24 Jan</span>
 
-            <div class="actions">
-              <a href="#">View</a>
-              <a href="">Remove</a>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="listItem">
-          <div class="thumbnail">
-            <img src="resource/apartment3.jpg" alt="">
-          </div>
-          <div class="details">
-            <h4 class="title">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h4>
-            <span id="date">20 Jan</span>
+        $count = mysqli_num_rows($result1);
+        if($count >= 1){
+          foreach($result1 as $wishlist){
+            
+            $sql2="SELECT `title` FROM `couches` WHERE `id`= '".$wishlist['couchid']."' ";
+            $result2 = mysqli_query($conn, $sql2);
+      
+            $couches = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 
-            <div class="actions">
-              <a href="#">View</a>
-              <a href="">Remove</a>
-            </div>
-          </div>
-        </div>
-      </li>
+              echo '
+                <li>
+                <div class="listItem">
+                  <div class="thumbnail">
+                    <img src="resource/images/apartment1.jpg" alt="">
+                  </div>
+                  <div class="details">
+                    <h4 class="title">'.$couches['title'].'</h4>
+                    <span id="date">'.$wishlist['timestamp'].'</span>
+        
+                    <div class="actions">
+                      <a href="couchdetail.php?id='.$wishlist['couchid'].'">View</a>
+                      <a href="#'.$wishlist['couchid'].'">Remove</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            ';
 
+          }
+        }else{
+          echo "No result found!!";
+        }
+
+      ?>
 
 
     </ul>
