@@ -20,23 +20,24 @@
 ?> 
   <div class="addcouch">
     <h1>Add Couch Details</h1>
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
 
-        <input type="hidden" name="username" value="<?php echo $_SESSION['username'] ?>" />
+        <input type="hidden" name="username" value="<?php echo $_SESSION['username'] ?>"  required/>
 
         <label for="title">Title</label>
-        <input type="text" name="title" placeholder="Write Title Here" >
+        <input type="text" name="title" placeholder="Write Title Here"  required>
 
         <label for="description">Description:</label></br>
-        <textarea id="description" name="description" rows="4" cols="74" placeholder="Write Description About Your Couch"></textarea>
+        <textarea id="description" name="description" rows="4" cols="74" placeholder="Write Description About Your Couch" required></textarea>
     
-        <input type="file" id="imageFiles" name="imagefiles" value="resource/apartment1.jpg">
+        <label for="description">Select Picture(one or multiple):</label></br>
+        <input type="file" id="imageFiles" name="imageFiles[]" multiple required>
     
         <label for="Terms">Select Term:</label>
-        <select name="terms" id="Terms">
-          <option value="free">Free</option>
-          <option value="paid">Paid</option>
-          <option value="exchang">Exchange</option>
+        <select name="terms" id="Terms" required>
+          <option value="Free">Free</option>
+          <option value="Paid">Paid</option>
+          <option value="Exchang">Exchange</option>
         </select>
           
         <div id="googleMap" style="width:100%;height:300px;background-color:yellow;margin:15px 0px">
@@ -67,13 +68,42 @@ var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
 <?php
 
+$ind=$conn->query("SELECT `id` from `couches`");
+$index=0;
+foreach($ind as $i){
+  $index=$i['id'];
+}
+
 if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['terms']) ){
   $username =$_POST['username'];
   $title =$_POST['title'];
   $description =$_POST['description'];
   $terms =$_POST['terms'];
   $latlng =$_POST['latlng'];
-  $imagefiles =$_POST['imagefiles'];
+  // $imageFiles =$_POST['imageFiles'];
+
+  $index++;
+  mkdir("public/images/".$index);
+  $extension=array("jpeg","jpg","png", "JPEG", "JPG", "PNG");
+  $files=count($_FILES['imageFiles']['tmp_name']);
+  foreach($_FILES['imageFiles']['tmp_name'] as $key => $tmp_name){
+    if($files>0){
+      $file_name = $_FILES['imageFiles']['name'][$key];
+      $file_tmp = $_FILES['imageFiles']['tmp_name'][$key];
+      $exten=pathinfo($file_name, PATHINFO_EXTENSION);
+      
+      if(in_array($exten, $extension)){
+        $location="public/images/".$index."/".$files.".".$exten;
+        move_uploaded_file($file_tmp=$_FILES['imageFiles']['tmp_name'][$key], $location);
+
+        $conn->query("INSERT INTO `couchimages` (`couchid`, `imagelocation`)
+                      VALUES ('$index', '$location') ");
+      }else{
+        echo array_push($error, "$file_name, ");
+      }
+      $files--;
+    }
+  }
 
   $sql="INSERT INTO `couches`(`username`, `title`, `description`, `term`, `location`) 
         VALUES ('$username','$title','$description', '$terms', '$latlng')";
