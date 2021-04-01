@@ -40,7 +40,7 @@
   
               <div class="actions">
                 <a href="couchdetail.php?id='.$couch['id'].'">View</a>
-                <a href="#'.$couch['id'].'">Remove</a>
+                <a href="?del='.$couch['id'].'">Remove</a>
               </div>
             </div>
           </div>
@@ -58,3 +58,33 @@
   
 </body>
 </html>
+
+
+<?php
+
+if(isset($_GET['del'])){
+  $couchid=$_GET['del'];
+  $username=$_SESSION['username'];
+
+
+  $sql1="DELETE FROM `couches` WHERE `id`='$couchid' AND `username`='$username' ";
+  $result=$conn->query($sql1);
+
+  if($result){
+    echo "
+    <script>
+      window.location.replace('dashboard.php');
+      alert('Couch has been Deleted!!');
+    </script>";
+  }else{
+    echo "
+    <script>
+      window.location.replace('dashboard.php');
+      alert('Failed to Delete.');
+    </script>";
+  }
+
+
+}
+
+?>

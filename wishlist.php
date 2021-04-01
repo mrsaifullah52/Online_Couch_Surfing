@@ -23,7 +23,7 @@
     <?php
       include 'config/db.php';
 
-      $sql1="SELECT `couchid`, `timestamp` FROM `wishlist` WHERE `username`= '".$_SESSION['username']."' ";
+      $sql1="SELECT `id`, `couchid`, `timestamp` FROM `wishlist` WHERE `username`= '".$_SESSION['username']."' ";
       $result1 = mysqli_query($conn, $sql1);
 
 
@@ -48,7 +48,7 @@
         
                     <div class="actions">
                       <a href="couchdetail.php?id='.$wishlist['couchid'].'">View</a>
-                      <a href="#'.$wishlist['couchid'].'">Remove</a>
+                      <a href="?del='.$wishlist['id'].'">Remove</a>
                     </div>
                   </div>
                 </div>
@@ -69,3 +69,34 @@
 
 </body>
 </html>
+
+
+
+<?php
+
+if(isset($_GET['del'])){
+  $couchid=$_GET['del'];
+  $username=$_SESSION['username'];
+
+
+  $sql1="DELETE FROM `wishlist` WHERE `id`='$couchid' AND `username`='$username' ";
+  $result=$conn->query($sql1);
+
+  if($result){
+    echo "
+    <script>
+      window.location.replace('wishlist.php');
+      alert('Wishlist has been Removed!!');
+    </script>";
+  }else{
+    echo "
+    <script>
+      window.location.replace('wishlist.php');
+      alert('Failed to Removed.');
+    </script>";
+  }
+
+
+}
+
+?>

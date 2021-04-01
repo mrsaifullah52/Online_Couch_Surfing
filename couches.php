@@ -56,10 +56,10 @@
 
                 if($couch['username']==$_SESSION['username']){
                   echo '
-                  <a href="#'.$couch['id'].'">Remove</a>';
+                  <a href="?del='.$couch['id'].'">Remove</a>';
                 }else{
                   echo '
-                  <a href="?id='.$couch['id'].'">Wishlist</a>';
+                  <a href="?wishlist='.$couch['id'].'">Wishlist</a>';
                 }
                 echo
                 '</div>
@@ -83,10 +83,9 @@
 
 <?php
 
-if(isset($_GET['id'])){
-  $couchid=$_GET['id'];
+if(isset($_GET['wishlist'])){
+  $couchid=$_GET['wishlist'];
   $username=$_SESSION['username'];
-
 
   $sql1="SELECT `username`, `couchid` from `wishlist` where `username`='$username' AND `couchid`='$couchid' ";
   $result=$conn->query($sql1);
@@ -115,7 +114,28 @@ if(isset($_GET['id'])){
       }
   }
 
+}else if(isset($_GET['del'])){
+  $couchid=$_GET['del'];
+  $username=$_SESSION['username'];
+
+  $sql1="DELETE FROM `couches` WHERE `id`='$couchid' AND `username`='$username' ";
+  $result=$conn->query($sql1);
+
+  if($result){
+    echo "
+    <script>
+      window.location.replace('couches.php');
+      alert('Couch has been Deleted!!');
+    </script>";
+  }else{
+    echo "
+    <script>
+      window.location.replace('couches.php');
+      alert('Failed to Delete.');
+    </script>";
+  }
 
 }
+
 
 ?>
