@@ -28,7 +28,6 @@
 
       if($count >= 1){
         foreach($result1 as $couch){
-
           
           $sql2="SELECT `imagelocation` FROM `couchimages` WHERE `couchid`='".$couch['id']."' ";
           $result2 = mysqli_query($conn, $sql2);
@@ -37,11 +36,11 @@
           <li>
           <div class="listItem">
             <div class="thumbnail">';
-            $imgLocation="";
+            $imgLocation=" ";
             foreach($result2 as $imag){
               $imgLocation=$imag['imagelocation'];
             }
-            echo '<img src="'.$imgLocation.'" alt="">';
+              echo '<img src="'.$imgLocation.'" alt="">';
             echo
             '</div>
             <div class="details">

@@ -36,12 +36,23 @@
       
             $couches = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 
-              echo '
+
+            $sql3="SELECT `imagelocation` FROM `couchimages` WHERE `couchid`='".$wishlist['couchid']."' ";
+            $result3 = mysqli_query($conn, $sql3);
+              
+            
+            echo '
                 <li>
                 <div class="listItem">
-                  <div class="thumbnail">
-                    <img src="resource/images/apartment1.jpg" alt="">
-                  </div>
+                  <div class="thumbnail">';
+                    
+                  $imgLocation=" ";
+                  foreach($result3 as $imag){
+                    $imgLocation=$imag['imagelocation'];
+                  }
+                  echo '<img src="'.$imgLocation.'" alt="">';
+
+                  echo '</div>
                   <div class="details">
                     <h4 class="title">'.$couches['title'].'</h4>
                     <span id="date">'.$wishlist['timestamp'].'</span>
