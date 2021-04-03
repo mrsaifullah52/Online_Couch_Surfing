@@ -90,11 +90,13 @@ if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['terms
     if($files>0){
       $file_name = $_FILES['imageFiles']['name'][$key];
       $file_tmp = $_FILES['imageFiles']['tmp_name'][$key];
+      
       $exten=pathinfo($file_name, PATHINFO_EXTENSION);
       
       if(in_array($exten, $extension)){
         $location="public/images/".$index."/".$files.".".$exten;
-        move_uploaded_file($file_tmp=$_FILES['imageFiles']['tmp_name'][$key], $location);
+        
+        move_uploaded_file($file_tmp, $location);
 
         $conn->query("INSERT INTO `couchimages` (`couchid`, `imagelocation`)
                       VALUES ('$index', '$location') ");
