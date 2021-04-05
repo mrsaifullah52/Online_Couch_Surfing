@@ -10,6 +10,11 @@ body{
   background-color: rgb(96, 97, 102);
 }
 
+.container{
+  width: 80%;
+  margin: 0px auto;
+}
+
 
 /* header section */
 .header{
@@ -271,12 +276,19 @@ background-color: rgb(60, 171, 175);
   background: transparent;
   outline: none;
   width: 100%!important;
+  resize: none;
+}
+.termbox{
+  border-bottom: 2px solid #fff;
+  padding: 10px 0px;
+  margin-bottom: 20px;
 }
 .addcouch select{
+  outline: none;
   background-color: rgb(96, 97, 102);
   color: #fff;
   height: 30px;
-  width: 100px;
+  width: 84%;
 }
 .addcouch input[type="file"]{
   font-size: 14px;
@@ -418,23 +430,23 @@ margin: 0px 15px;
   }
   }
 
-.right{
+.parent .right{
   height: 100vh;
   background-color: #f3f2f2;
   padding: 20px 15px;
 }
-.right .top{
+.parent .right .top{
   display: flex;
   flex-direction: column;
 }
-.right .top span{
+.parent .right .top span{
   color: #fff;
   width: 100%;
   background-color: rgb(83, 225, 230);
   padding: 10px 15px;
   margin: 2px;
 }
-.right .top a{
+.parent .right .top a{
   text-decoration: none;
   color: #fff;
   display: inline-block;
@@ -442,31 +454,31 @@ margin: 0px 15px;
   padding: 10px 15px;
   margin: 2px;
 }
-.right .top a:hover{
+.parent .right .top a:hover{
   background-color: rgb(63, 176, 180);
 }
-.right .owner_profile{
+.parent .right .owner_profile{
   width: 100%;
 }
-.right .owner_profile .dp{
+.parent .right .owner_profile .dp{
   width: 50%;
   margin: 0px auto;
 }
 
-.right .owner_profile img{
+.parent .right .owner_profile img{
   width: 100%;
   margin: 0px auto;
 }
 
-.right .owner_profile .details{
+.parent .right .owner_profile .details{
   padding-top: 20px;
   text-align: center;
 }
 
-.right .bottom h4{
+.parent .right .bottom h4{
   padding-top: 10px;   
 }
-.bottom .map{
+.parent .bottom .map{
   margin-top: 20px;
   height: 250px;
   background-color: rgb(83, 225, 230);
@@ -570,4 +582,143 @@ margin: 0px 15px;
 }
 .loginbox a:hover {
   color: rgb(63, 185, 189);
+}
+
+
+/* chat page */
+.chat div{
+  background-color: rgb(96, 97, 102);
+}
+
+.chat .container>div h5{
+  font-size: 18px;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+.chat .container{
+  display: flex;
+}
+
+.chat .left{
+  border-left: 5px solid rgb(60, 171, 175);
+  border-bottom: 5px solid rgb(60, 171, 175);
+  width: 300px;
+  height: Calc(90vh-100px);
+}
+
+.chat .left ul{
+  display: flex;
+  flex-direction: column;
+}
+.chat .left ul li{
+  list-style-type: none;
+}
+.chat .left ul li a{
+  text-decoration: none;
+  color: #fff;
+  display: inline-block;
+  padding: 10px 50px;
+}
+.chat .left ul li:hover{
+  background-color: rgb(50, 143, 146);
+}
+
+.chat .right{
+  width: 100%;
+  height: Calc(90vh-100px);
+  background-color: #fff;
+  border-left: 5px solid rgb(60, 171, 175);
+}
+
+.chatbox{
+  display: grid;
+  grid-template-rows: Calc(85vh - 80px) 80px;
+  overflow: hidden;
+}
+
+.chatbox .messages{
+  background-color: #fff;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.chatbox .messages ul{
+  display: flex;
+  flex-direction: column;
+}
+.chatbox .messages ul li{
+  display: grid;
+
+  list-style: none;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: rgb(60, 171, 175);
+  color: #fff;
+  overflow: hidden;
+}
+.chatbox .messages ul li div{
+  padding: 5px;
+  background-color: transparent!important;
+  display: flex;
+  flex-direction: column;
+}
+.chatbox .messages ul .fromuser div:first-child{
+  background-color: rgb(96, 97, 102)!important
+}
+
+.chatbox .messages ul .touser div:last-child{
+  background-color: rgb(96, 97, 102)!important
+}
+
+.chatbox .messages ul .fromuser{
+  margin-right: 50px;
+  grid-template-columns: 100px auto;
+}
+
+.chatbox .messages ul .touser{
+  margin-left: 50px;
+  grid-template-columns: auto 100px;
+}
+
+
+.chatbox .messages #date{
+  font-size: 10px;
+}
+
+.chatbox .inputfields form{
+  display: grid;
+  grid-template-columns: Calc(100% - 50px) 50px;
+}
+
+.chatbox .inputfields form input{
+  height: 80px;
+  outline: none;
+  border: none;
+}
+.chatbox .inputfields form input[type="text"]{
+  padding: 10px;
+  border-top: 1px solid rgb(60, 171, 175);
+}
+.chatbox .inputfields form input[type="submit"]{
+  cursor: pointer;
+  background-color: rgb(60, 171, 175);
+  color: #fff;
+}
+
+
+
+/* leaflet.js map library */
+#map { 
+  height: 250px;
+  width: 100%;
+  margin:15px 0px;
+  border: 1px solid rgb(60, 171, 175);
+  cursor: pointer;
+ }
+#map span{
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  padding-top: 10%;
 }

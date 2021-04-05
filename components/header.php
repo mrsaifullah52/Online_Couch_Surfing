@@ -20,7 +20,7 @@
           </a></li>
           <li><a href="wishlist.php">Wishlists</a></li>
           <li><a href="couches.php">Couches</a></li>
-          <li><a href="#">Chat</a></li>
+          <li><a href="chat.php">Chat</a></li>
           <li><a href="logout.php">Log out</a></li>
         </ul>
       </div>

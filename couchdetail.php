@@ -6,6 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add Couch</title>
     <link rel="stylesheet" href="resource/styling/style1.css">
+
+    <!-- leaflet.js map library -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+   
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+   
 </head>
 <body>
 
@@ -15,7 +25,7 @@
   include 'components/header.php';
 
 //   if(isset($_GET['id'])){
-        $sql1="SELECT `id`, `title`, `description`, `username`, `term`, `location`, `timestamp` FROM `couches` 
+        $sql1="SELECT `id`, `title`, `description`, `username`, `term`, `latitude`, `longitude`, `timestamp` FROM `couches` 
                     WHERE `id`='".$_GET['id']."'";
         $result1 = mysqli_query($conn, $sql1);
         $row = mysqli_fetch_array($result1);
@@ -95,13 +105,29 @@
         </div>
         <div class="bottom">
             <h4>Location</h4>
-            <div class="map">
-                <?php echo $row['location']?>
+            <div class="map" id="map" onclick="locateit(<?php echo $row['latitude'].','.$row['longitude'] ?>)">
+                
             </div>
         </div>
     </div>
 
     </div>
+
+    <script>
+      function showPosition(lat, lng) {
+        const mymap = L.map('map').setView([lat, lng], 8);
+        const tiles='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        const attribution='Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+        L.tileLayer(tiles, {attribution}).addTo(mymap);
+        const marker = L.marker([lat, lng]).addTo(mymap);
+      }
+      showPosition( <?php echo $row['latitude'].','.$row['longitude'] ?> );
+
+      function locateit(lat,lng){
+        const loca=lat+","+lng;
+        window.open('https://www.google.com/maps/search/?api=1&query='+loca);
+      }
+    </script>
 </body>
 </html> 
 

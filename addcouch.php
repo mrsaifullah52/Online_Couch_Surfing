@@ -9,6 +9,14 @@
     <!-- <link rel="stylesheet" href="resource/styling/style.css"> -->
     <link rel="stylesheet" href="resource/styling/style1.css">
 
+<!-- leaflet.js map library -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+   
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
 
   </head>
 <body>
@@ -33,15 +41,20 @@
         <label for="description">Select Picture(one or multiple):</label></br>
         <input type="file" id="imageFiles" name="imageFiles[]" multiple required>
     
-        <label for="Terms">Select Term:</label>
-        <select name="terms" id="Terms" required>
-          <option value="Free">Free</option>
-          <option value="Paid">Paid</option>
-          <option value="Exchang">Exchange</option>
-        </select>
-          
-        <div id="googleMap" style="width:100%;height:300px;background-color:yellow;margin:15px 0px">
-          google map
+        <div class="termbox">
+          <label for="Terms">Select Term:</label>
+          <select name="terms" id="Terms" required>
+            <option value="Free">Free</option>
+            <option value="Paid">Paid</option>
+            <option value="Exchang">Exchange</option>
+          </select>
+        </div>
+        
+        <label for="map">Set Your Location:</label>
+        <div onclick="getLocation()"  id="map">
+          <span>Click here to set your Current Location</span>
+          <input type="hidden" name="latitude" id="latitude"/>
+          <input type="hidden" name="longitude" id="longitude"/>
         </div>
         <input type="hidden" name="latlng" value="51.508742,-0.120850">
 
@@ -51,16 +64,35 @@
   </div>
 
 
-    <!-- <script>
-function myMap() {
-var mapProp= {
-  center:new google.maps.LatLng(51.508742,-0.120850),
-  zoom:5,
-};
-var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+<script>
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);   
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  const lat=position.coords.latitude;
+  const lng=position.coords.longitude;
+  
+  document.getElementById("latitude").value=lat;
+  document.getElementById("longitude").value=lng;
+
+  console.log(lat+" / "+lng);
+
+  const mymap = L.map('map').setView([lat, lng], 8);
+  const tiles='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  const attribution='Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+  L.tileLayer(tiles, {attribution}).addTo(mymap);
+  const marker = L.marker([lat, lng]).addTo(mymap);
+  
+
 }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_6-kYEtJliZDcM9iFCyUPpwinM7Gu9mA&callback=myMap"></script> -->
+
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_6-kYEtJliZDcM9iFCyUPpwinM7Gu9mA&callback=myMap"></script> -->
 
 </body>
 </html>
@@ -79,8 +111,8 @@ if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['terms
   $title =$_POST['title'];
   $description =$_POST['description'];
   $terms =$_POST['terms'];
-  $latlng =$_POST['latlng'];
-  // $imageFiles =$_POST['imageFiles'];
+  $latitude =$_POST['latitude'];
+  $longitude =$_POST['longitude'];
 
   $index++;
   mkdir("public/images/".$index);
@@ -107,8 +139,8 @@ if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['terms
     }
   }
 
-  $sql="INSERT INTO `couches`(`username`, `title`, `description`, `term`, `location`) 
-        VALUES ('$username','$title','$description', '$terms', '$latlng')";
+  $sql="INSERT INTO `couches`(`username`, `title`, `description`, `term`, `latitude`, `longitude`) 
+        VALUES ('$username','$title','$description', '$terms', '$latitude', '$longitude')";
 
   if($conn->query($sql)){
     echo "<script>alert('Couch has been added.')</script>";
