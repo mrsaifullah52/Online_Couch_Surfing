@@ -51,12 +51,15 @@
         </div>
         
         <label for="map">Set Your Location:</label>
+
+
         <div onclick="getLocation()"  id="map">
           <span>Click here to set your Current Location</span>
           <input type="hidden" name="latitude" id="latitude"/>
           <input type="hidden" name="longitude" id="longitude"/>
         </div>
-        <input type="hidden" name="latlng" value="51.508742,-0.120850">
+
+
 
         <input type="submit" value="Add Couch Details"/>
     </form>
@@ -82,7 +85,7 @@ function showPosition(position) {
 
   console.log(lat+" / "+lng);
 
-  const mymap = L.map('map').setView([lat, lng], 8);
+  const mymap = L.map('map').setView([lat, lng], 10);
   const tiles='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
   const attribution='Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
   L.tileLayer(tiles, {attribution}).addTo(mymap);

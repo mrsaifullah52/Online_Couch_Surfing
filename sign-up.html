@@ -4,110 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style1.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+    <link rel="stylesheet" href="resource/styling/style1.css">
+        
     <title>Sign-up</title>
-    <style>
-h1{
-    text-align: center;
-    margin: 0px;
-    padding-bottom: 20px;
-    font-size: 22px;
-}
-.signupbox .form{
-    padding: 30px 15px 15px;
-    color: white;
-    width: 40%;
-    margin: 0px auto;
 
-}
-.signupbox{
-    background-color: rgb(96, 97, 102);
-}
-
-.signupbox label{
-    margin: 0px;
-    padding: 0px;
-    color: #fff;
-    font-weight: bold;
-}
-.signupbox input{
-    width: 100%;
-    margin-bottom: 20px;
-    border: none;
-    border-bottom: 1px solid #fff;
-    background: transparent;
-    outline: none;
-    height: 20px;
-    color: #fff;
-    font-size: 16px;
-}
-.signupbox button
-{
-    border: none;
-    outline: none;
-    width: 80%;
-    height: 40px;
-    color: #fff;
-    background: rgb(83, 225, 230);
-    font-size: 18px;
-    border-radius: 20px;
-    transition: .5s ease-in-out;
-    margin-left: 60px;
-}
-
-.signupbox button:hover{
-    background: rgb(63, 185, 189);
-    cursor: pointer;
-    transform: scale(1.03,1.03);
-
-}
-.radioBtn{
-    display: flex;
-    flex-direction: column;
-}
-
-.radioBtn div{
-    display: flex
-}
-.radioBtn div span{
-    display: flex;
-}
-.radioBtn span label{
-    line-height: 35px;
-}
-.radioBtn input{
-    width: 20px;
-    height: 20px;
-    padding: 10px;
-    margin: 10px;
-}
-input[ type="radio"]{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-input[ type="radio"] label{
-    margin: 0px 15px;
-    height: 38px;
-    display: inline-block;
-}
-
-.checkbox{
-    display: flex;
-}
-.checkbox input{
-    width: 20px;
-    height: 16px;
-}
-    </style>
 </head>
 <body>
         <div class= "signupbox">
 
              <div class="form">
                  <h1>Couch Surfing</h1>
-                 <form action="signup.php" method="POST">
+                 <form action="signup.php" method="POST" enctype="multipart/form-data">
                      <label for="fname">First Name</label>
                      <input type="text" name="fname" id="fname" placeholder="First Name" required>
 
