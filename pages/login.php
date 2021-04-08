@@ -1,6 +1,6 @@
 <?php
 // accessing database
-include 'config/db.php';
+include '../config/db.php';
 session_start();
 
 if( isset($_POST['Email']) && isset( $_POST['Password'] ) ){
@@ -22,13 +22,13 @@ if( isset($_POST['Email']) && isset( $_POST['Password'] ) ){
         $_SESSION['name'] = $row['fname'];
         $_SESSION['lname'] = $row['lname'];
         
-        echo "</br> user Logged in <script>window.location.replace('dashboard.php')</script>";
+        echo "</br> user Logged in <script>window.location.replace('../pages/dashboard.php')</script>";
     
     }else{
-        echo "<script>window.location.replace('index.php'); alert('Authentication Failed, try again. ')</script>";
+        echo "<script>window.location.replace('../index.php'); alert('Authentication Failed, try again. ')</script>";
     }
 }else{
-    echo "failed to submit";
+    echo "failed to login try again";
 }
 
 ?>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['username'])){
-    echo "<script> window.location.replace('dashboard.php')</script>";
+    echo "<script> window.location.replace('pages/dashboard.php')</script>";
 }
 ?>
 
@@ -21,7 +21,7 @@ if(isset($_SESSION['username'])){
         <div class="form">
             <h1>Couch Surfing</h1>
         
-            <form action="login.php" method="POST">
+            <form action="pages/login.php" method="POST">
                 <label for="Email">Email</label>
                 <input id="email" type="Email" name="Email" placeholder="example@gmail.com" required autocomplete="off">
         
@@ -30,7 +30,7 @@ if(isset($_SESSION['username'])){
         
                 <a href="forgetpassword.html">Forget password?</a>
                 <input type="submit" value="Sign-in">
-                <input type="button" value="Create New Account" onclick="window.location.replace('sign-up.html')">
+                <input type="button" value="Create New Account" onclick="window.location.replace('pages/sign-up.html')">
             </form>    
         </div> 
     </div>

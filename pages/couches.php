@@ -5,14 +5,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Couches</title>
-  <link rel="stylesheet" href="resource/styling/style1.css">
+  <link rel="stylesheet" href="../resource/styling/style1.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 </head>
 <body>
 
 <?php
-  include 'components/header.php';
+  include '../components/header.php';
+  include '../config/db.php';
 ?> 
 
 <div class="couches">
@@ -32,7 +33,6 @@
       <h5>Couches (Ads)</h5>
       <ul>
       <?php
-      include 'config/db.php';
 
       $query_statement="SELECT `id`, `username`, `title`, `timestamp` FROM `couches` ";
       $result = mysqli_query($conn, $query_statement);
@@ -53,7 +53,7 @@
               foreach($result2 as $imag){
                 $imgLocation=$imag['imagelocation'];
               }
-              echo '<img src="'.$imgLocation.'" alt="">';
+              echo '<img src="../'.$imgLocation.'" alt="">';
 
               echo '
             </div>

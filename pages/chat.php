@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Couches</title>
-  <link rel="stylesheet" href="resource/styling/style1.css">
+  <link rel="stylesheet" href="../resource/styling/style1.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 
@@ -16,8 +16,8 @@
 <body>
 
 <?php
-  include 'config/db.php';
-  include 'components/header.php';
+  include '../config/db.php';
+  include '../components/header.php';
 ?> 
 
 
@@ -35,13 +35,17 @@
 
           $to="SELECT DISTINCT `touser` FROM `messages` WHERE `fromuser`='".$_SESSION['username']."'";
           $from="SELECT DISTINCT `fromuser` FROM `messages` WHERE `touser`='".$_SESSION['username']."'";
+
           $tolist = $conn->query($to);
           $fromlist = $conn->query($from);
+
           $tolistcount=mysqli_num_rows($tolist);
           $fromlistcount=mysqli_num_rows($fromlist);
 
           if($tolistcount>0){
+
             foreach($tolist as $chatlist){
+
               $user=$conn->query("SELECT `fname`, `lname` FROM `users` WHERE `username`='".$chatlist['touser']."'");
               $unread=$conn->query("SELECT COUNT(id) FROM `messages` WHERE `status`='unread' AND `fromuser`='".$chatlist['touser']."'");
               

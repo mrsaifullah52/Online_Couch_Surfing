@@ -6,12 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wishlist</title>
   
-  <link rel="stylesheet" href="resource/styling/style1.css">
+  <link rel="stylesheet" href="../resource/styling/style1.css">
 </head>
 <body>
 
 <?php
-  include 'components/header.php';
+  include '../components/header.php';
+  include '../config/db.php';
 ?> 
 
 <div class="wishlist">
@@ -21,7 +22,6 @@
 
 
     <?php
-      include 'config/db.php';
 
       $sql1="SELECT `id`, `couchid`, `timestamp` FROM `wishlist` WHERE `username`= '".$_SESSION['username']."' ";
       $result1 = mysqli_query($conn, $sql1);

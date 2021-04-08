@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add Couch</title>
-    <link rel="stylesheet" href="resource/styling/style1.css">
+  <link rel="stylesheet" href="../resource/styling/style1.css">
 
     <!-- leaflet.js map library -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -21,8 +21,8 @@
 
 <?php
 
-  include 'config/db.php';
-  include 'components/header.php';
+  include '../config/db.php';
+  include '../components/header.php';
 
 //   if(isset($_GET['id'])){
         $sql1="SELECT `id`, `title`, `description`, `username`, `term`, `latitude`, `longitude`, `timestamp` FROM `couches` 
@@ -52,7 +52,7 @@
                         foreach($result2 as $imag){
                             echo '
                                 <div class="slider">
-                                    <img src="'.$imag['imagelocation'].'" alt="Couch '.$imag['imagelocation'].'">
+                                    <img src="../'.$imag['imagelocation'].'" alt="Couch '.$imag['imagelocation'].'">
                                 </div>';
                         }
                     ?>
@@ -63,9 +63,9 @@
                 
                 <?php 
                     if($row['username']==$_SESSION['username']){
-                        echo '<span><a href="?del='.$row['id'].'">Remove Couch</a></span>';
+                        echo '<span><a href="?booked='.$row['id'].'">Booked?</a></span>';
                     }else{
-                        echo '<span><a href="?wishlist='.$row['id'].'">Add to Wishlist</a></span>';
+                        echo '<span><a href="?book='.$row['id'].'">Book Now</a></span>';
                     }
                 ?>
             </div>
@@ -87,7 +87,7 @@
         <div class="top">
             <div class="owner_profile">
                 <div class="dp">
-                    <img src="resource/images/user.png" alt="userprofile">
+                    <img src="../resource/images/user.png" alt="userprofile">
                 </div>
                 <div class="details">
                     <h5>
@@ -134,8 +134,8 @@
 
 <?php
 
-if(isset($_GET['wishlist'])){
-  $couchid=$_GET['wishlist'];
+if(isset($_GET['book'])){
+  $couchid=$_GET['book'];
   $username=$_SESSION['username'];
 
   $sql1="SELECT `username`, `couchid` from `wishlist` where `username`='$username' AND `couchid`='$couchid' ";
@@ -165,8 +165,8 @@ if(isset($_GET['wishlist'])){
       }
   }
 
-}else if(isset($_GET['del'])){
-  $couchid=$_GET['del'];
+}else if(isset($_GET['booked'])){
+  $couchid=$_GET['booked'];
   $username=$_SESSION['username'];
 
   $sql1="DELETE FROM `couches` WHERE `id`='$couchid' AND `username`='$username' ";

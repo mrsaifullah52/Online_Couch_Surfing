@@ -7,7 +7,7 @@
     <title>Add Couch</title>
 
     <!-- <link rel="stylesheet" href="resource/styling/style.css"> -->
-    <link rel="stylesheet" href="resource/styling/style1.css">
+  <link rel="stylesheet" href="../resource/styling/style1.css">
 
 <!-- leaflet.js map library -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -18,13 +18,15 @@
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
 
+   <!-- jquery -->
+   <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" ></script>
+
   </head>
 <body>
 
-
 <?php
-  include 'config/db.php';
-  include 'components/header.php';
+  include '../config/db.php';
+  include '../components/header.php';
 ?> 
   <div class="addcouch">
     <h1>Add Couch Details</h1>
@@ -53,7 +55,7 @@
         <label for="map">Set Your Location:</label>
 
 
-        <div onclick="getLocation()"  id="map">
+        <div id="map">
           <span>Click here to set your Current Location</span>
           <input type="hidden" name="latitude" id="latitude"/>
           <input type="hidden" name="longitude" id="longitude"/>
@@ -68,6 +70,7 @@
 
 
 <script>
+let marker;
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);   
@@ -75,6 +78,7 @@ function getLocation() {
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
+getLocation();
 
 function showPosition(position) {
   const lat=position.coords.latitude;
@@ -85,14 +89,23 @@ function showPosition(position) {
 
   console.log(lat+" / "+lng);
 
-  const mymap = L.map('map').setView([lat, lng], 10);
+  let mymap = L.map('map').setView([lat, lng], 10);
   const tiles='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
   const attribution='Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
   L.tileLayer(tiles, {attribution}).addTo(mymap);
-  const marker = L.marker([lat, lng]).addTo(mymap);
-  
+  marker = L.marker([lat, lng]).addTo(mymap);
 
+// change latitude and longitude while click on map
+  mymap.on('click', function(e){
+    if(marker){
+      mymap.removeLayer(marker);
+    }
+    console.log(e.latlng);
+    marker = L.marker(e.latlng).addTo(mymap);
+  });
 }
+
+
 </script>
 
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_6-kYEtJliZDcM9iFCyUPpwinM7Gu9mA&callback=myMap"></script> -->
@@ -118,7 +131,7 @@ if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['terms
   $longitude =$_POST['longitude'];
 
   $index++;
-  mkdir("public/images/".$index);
+  mkdir("../public/images/".$index);
   $extension=array("jpeg","jpg","png", "JPEG", "JPG", "PNG");
   $files=count($_FILES['imageFiles']['tmp_name']);
   foreach($_FILES['imageFiles']['tmp_name'] as $key => $tmp_name){

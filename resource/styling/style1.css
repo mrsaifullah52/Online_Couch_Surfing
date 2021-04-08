@@ -114,25 +114,7 @@ li .listItem{
   top: 0px;
   right: 0px;
 }
-.details .actions{
-  margin-top: 20px;
-}
-.details .actions a{
-  border-radius: 5px;
-  padding: 10px 15px;
-  background-color: rgb(63, 185, 189);
-  color: #fff;
-  text-decoration: none;
-}
-.details .actions a:hover{
-  background-color: rgb(60, 171, 175);
-}
 
-.list h5{
-  font-size: 18px;
-  color: rgb(60, 171, 175);
-  padding: 15px;
-}
 
 /* dashboard */
 .dashboard .list h5{
@@ -140,7 +122,30 @@ li .listItem{
   color: rgb(60, 171, 175);
   padding: 15px;
 }
+.details .actions{
+  margin-top: 20px;
+}
+.details .actions a{
+  border-radius: 5px;
+  padding: 10px 15px;
+  display: inline-block;
+  margin: 0px 5px;
+  background-color: rgb(63, 185, 189);
+  color: #fff;
+  text-decoration: none;
+}
+.details .actions a:hover{
+  background-color: rgb(60, 171, 175);
+}
+.booked{
+  cursor: not-allowed;
+}
 
+.list h5{
+  font-size: 18px;
+  color: rgb(60, 171, 175);
+  padding: 15px;
+}
 /* profile page */
 .profile .image{
   width: 100%;
