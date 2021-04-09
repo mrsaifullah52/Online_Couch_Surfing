@@ -98,10 +98,12 @@
           </ul>
       </div>
       <div class="inputfields">
+
         <form>
           <input type="hidden" name="touser" value="<?php echo $_GET['touser'] ?>">
           <input type="text" id="message" name="message" placeholder="Enter your message!!"  autocomplete="off"/>
           <input type="submit" value="Send">
+
         </form>
       </div>
     </div>
@@ -121,8 +123,9 @@
     const chatbox=document.querySelector(".messages ul");
     let start=1;
       $(function () {
-        $('form').on('submit', function (e) {
-          e.preventDefault();
+        $('form').on('submit', function (value) {
+          value.preventDefault();
+          // ajax
           $.ajax({
             type: 'POST',
             url: 'getChat.php',
@@ -140,7 +143,7 @@
         let url="getChat.php?touser=<?php echo $_GET['touser']?>&start=";
         $.ajax({
           type: 'GET',
-          url: url+start,
+          url: url + start,
           dataType: 'json',
           success: function(result){
             if(result.items){
@@ -173,6 +176,7 @@
                 ${item.datentime}
               </span>
             </div>
+
             <div>
               <p>
                 ${item.message}
@@ -229,7 +233,7 @@
 
 
 
-<?php
+<!-- <?php
 if(isset($_GET['userid'])){
   $fromuser=$_SESSION['username'];
   $touser=$_GET['userid'];
@@ -258,4 +262,4 @@ if(isset($_GET['userid'])){
   }
 }
 
-?>
+?> -->

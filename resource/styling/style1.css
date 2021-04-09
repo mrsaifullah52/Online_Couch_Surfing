@@ -197,9 +197,6 @@ li .listItem{
   background-color: rgb(60, 171, 175);
 }
 
-/* wishlist */
-
-
 
 /* couches page */
 .couches form{
@@ -816,3 +813,76 @@ input[ type="radio"] label{
     width: 20px;
     height: 16px;
 }
+
+/* wishlist */
+.wishlists li{
+  position:relative;
+  overflow: hidden;
+}
+.wishlists li .del{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border-top-right-radius: 14px;
+  overflow: hidden;
+}
+.wishlists li .del span{
+  color: red;
+  background-color: transparent;
+}
+.wishlists li .del span:hover{
+  color: rgb(167, 7, 7);
+  background-color: transparent;
+}
+.wishlists form{
+  width: 78%;
+  margin: 10px auto;
+}
+
+.wishlists .boxcontainer{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.wishlists .boxcontainer>a{
+  margin-left: 10px;
+  width: 120px;
+  border-radius: 20px;
+  background-color: rgb(63, 185, 189);
+  color: #fff;
+  text-decoration: none;
+  padding: 5px;
+}
+
+.wishlists .elementcontainer{
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid #3695d4;
+  background-color: #fff;
+ display: grid;
+ grid-template-columns: auto 50px;
+}
+.wishlists .search{
+margin: 5px 10px;
+border: none;
+outline: none;
+width: 100%;
+padding: 0px 10px;
+border-radius: 50px;
+font-size: 18px;
+font-family: Arial;
+margin-right: 200px;
+}
+
+.wishlists .material-icons{
+text-align: center;
+background-color: rgb(63, 185, 189);
+font-size: 26px;
+color: #fff;
+cursor: pointer;
+}
+.wishlists .material-icons:hover{
+background-color: rgb(60, 171, 175);
+}
+
