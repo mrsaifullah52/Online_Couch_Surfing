@@ -92,14 +92,17 @@ li .listItem{
 }
 .listItem{
   display: flex;
-
+}
+.listItem .title a{
+  text-decoration: none;
+  color: rgb(60, 171, 175);
 }
 .listItem .thumbnail{
-  width: 250px;
+  width: 150px;
 }
 .listItem .thumbnail img{
   width: 100%;
-  max-height: 250px;
+  max-height: 150px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
 }
@@ -111,8 +114,32 @@ li .listItem{
 }
 .details #date{
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 20px;
+  right: 20px;
+}
+
+
+
+
+
+
+.list li{
+  position: relative;
+}
+.list li > a span{
+  color: red;
+  background-color: transparent;
+}
+.list li > a span:hover{
+  color: rgb(167, 7, 7);
+  background-color: transparent;
+}
+.list li > a{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border-top-right-radius: 14px;
+  overflow: hidden;
 }
 
 
@@ -964,4 +991,115 @@ background-color: rgb(60, 171, 175);
   width: 100%;
   display: flex;
   flex-direction: column; 
+}
+/* view wishlist */
+.wishlistdetail{
+  width: 80%;
+  margin: 0px auto;
+  padding: 0px 15px;
+  display: grid;
+  grid-template-columns: auto 20%;
+}
+
+.wishlistdetail #map{
+  margin-top: 0px;
+}
+
+.wishlistdetail .right{
+  height: 100vh;
+  background-color: #f3f2f2;
+  padding: 20px 15px;
+}
+.wishlistdetail .right .top{
+  display: flex;
+  flex-direction: column;
+}
+
+.wishlistdetail .right .top a{
+  text-decoration: none;
+  color: #fff;
+  display: inline-block;
+  background-color: rgb(83, 225, 230);
+  padding: 8px 15px;
+  margin: 2px;
+}
+.wishlistdetail .right .top a:hover{
+  background-color: rgb(63, 176, 180);
+}
+
+.wishlistdetail .top p{
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.wishlistdetail .right .owner_profile{
+  width: 100%;
+}
+.wishlistdetail .right .owner_profile .dp{
+  width: 50%;
+  margin: 0px auto;
+}
+
+.wishlistdetail .right .owner_profile img{
+  width: 100%;
+  margin: 0px auto;
+}
+
+.wishlistdetail .right .owner_profile .details{
+  padding-top: 20px;
+  text-align: center;
+}
+
+.wishlistdetail .right .bottom{
+  margin: 10px 0px;
+}
+
+.wishlistdetail .right .bottom h4{
+  padding-top: 10px;   
+}
+
+.wishlistdetail .right .bottom input[type="text"]{
+  padding: 5px;
+  outline: none;
+  margin: 8px 0px;
+  border: 0.5px solid rgb(83, 225, 230);
+}
+.wishlistdetail .right .bottom textarea{
+  resize: none;
+  padding: 5px;
+  outline: none;
+  margin: 8px 0px;
+  border: 0.5px solid rgb(83, 225, 230);
+}
+
+.wishlistdetail .right .bottom input[type="submit"]{
+  width: 100%;
+  height: 30px;
+  color: #fff;
+  background-color: rgb(83, 225, 230);
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.bigmap{
+  position: relative;
+  z-index: 0;
+  cursor: all-scroll !important;
+}
+
+.bigmap span{
+  padding-top: 10px!important;
+  padding: 10px;
+  background-color: #fff;
+  color: rgb(83, 225, 230);
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  z-index: 1000;
+}
+
+.bigmap span:hover{
+  background-color: rgb(154, 209, 211);
+  color: #fff;
 }

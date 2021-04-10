@@ -58,24 +58,23 @@
               echo '
             </div>
             <div class="details">
-              <h4 class="title">'.$couch['title'].'</h4>
-              <span id="date">'.$couch['timestamp'].'</span>
-  
-              <div class="actions">
-                <a href="couchdetail.php?id='.$couch['id'].'">View</a>';
+              <h4 class="title"><a href="couchdetail.php?id='.$couch['id'].'">'.$couch['title'].'</a></h4>
+              <span id="date">'.$couch['timestamp'].'</span>';
 
-                if($couch['username']==$_SESSION['username']){
-                  echo '
-                  <a href="?del='.$couch['id'].'">Remove</a>';
-                }else{
-                  echo '
-                  <a href="?wishlist='.$couch['id'].'">Wishlist</a>';
-                }
-                echo
-                '</div>
+                echo'
             </div>
-          </div>
-        </li>
+          </div>';
+
+          if($couch['username'] == $_SESSION['username']){
+            echo '
+            <a href="?del='.$couch['id'].'" class="del">
+              <span class="material-icons">
+                delete_forever
+              </span>
+            </a>';
+          } 
+          
+        echo '</li>
         ';
         }
       }else{

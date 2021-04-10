@@ -24,92 +24,91 @@
   include '../config/db.php';
   include '../components/header.php';
 
-//   if(isset($_GET['id'])){
+  if(isset($_GET['id'])){
         $sql1="SELECT `id`, `title`, `description`, `username`, `term`, `latitude`, `longitude`, `timestamp` FROM `couches` 
                     WHERE `id`='".$_GET['id']."'";
         $result1 = mysqli_query($conn, $sql1);
         $row = mysqli_fetch_array($result1);
-//   }else{
-//     echo "
-//     <script>
-//       window.location.replace('dashboard.php');
-//       alert('Link to this Couch has been Broken!!');
-//     </script>";
-//   }
+  }else{
+    echo "
+    <script>
+      window.location.replace('dashboard.php');
+      alert('Link to this Couch has been Broken!!');
+    </script>";
+  }
 
 ?> 
     <!-- slider -->
     <div class="parent">
+        
+      <div class="slider">
+          <div class="header">
+              <div>
+                  <figure>
+                      <?php
+                          $sql2="SELECT `imagelocation` FROM `couchimages` WHERE `couchid`='".$_GET['id']."'";
+                          $result2 = mysqli_query($conn, $sql2);
+                          foreach($result2 as $imag){
+                              echo '
+                                  <div class="slider">
+                                      <img src="../'.$imag['imagelocation'].'" alt="Couch '.$imag['imagelocation'].'">
+                                  </div>';
+                          }
+                      ?>
+                  </figure>
+              </div>
+      
+              <div class="buttons">
+                  
+                  <?php 
+                      if($row['username']==$_SESSION['username']){
+                          echo '<span><a href="?booked='.$row['id'].'">Booked?</a></span>';
+                      }else{
+                          echo '<span><a href="?book='.$row['id'].'">Book Now</a></span>';
+                      }
+                  ?>
+              </div>
+          </div>
 
-  
-    <div class="slider">
-        <div class="header">
-            <div>
-                <figure>
-                    <?php
-                        $sql2="SELECT `imagelocation` FROM `couchimages` WHERE `couchid`='".$_GET['id']."'";
-                        $result2 = mysqli_query($conn, $sql2);
-                        foreach($result2 as $imag){
-                            echo '
-                                <div class="slider">
-                                    <img src="../'.$imag['imagelocation'].'" alt="Couch '.$imag['imagelocation'].'">
-                                </div>';
-                        }
-                    ?>
-                </figure>
-            </div>
-    
-            <div class="buttons">
-                
-                <?php 
-                    if($row['username']==$_SESSION['username']){
-                        echo '<span><a href="?booked='.$row['id'].'">Booked?</a></span>';
-                    }else{
-                        echo '<span><a href="?book='.$row['id'].'">Book Now</a></span>';
-                    }
-                ?>
-            </div>
-        </div>
+          <div class="details">                      
+              <div class="title"> 
+                  <h3> <?php echo $row['title'] ?> </h3>
+              </div>
+              <div class="description">
+                  <h4>Couch Details</h4>
+                  <P> <?php echo $row['description'] ?> </p>
+              </div>
+          </div>
+      
+      </div>
 
-        <div class="details">                      
-            <div class="title"> 
-                <h3> <?php echo $row['title'] ?> </h3>
-            </div>
-            <div class="description">
-                <h4>Couch Details</h4>
-                <P> <?php echo $row['description'] ?> </p>
-            </div>
-        </div>
-    
-    </div>
-
-    <div class="right">
-        <div class="top">
-            <div class="owner_profile">
-                <div class="dp">
-                    <img src="../resource/images/user.png" alt="userprofile">
-                </div>
-                <div class="details">
-                    <h5>
-                    <?php
-                        $sql3="SELECT `fname`,`lname` FROM `users` WHERE `username`='".$row['username']."'";
-                        $result3=mysqli_query($conn, $sql3);
-                        $name=mysqli_fetch_assoc($result3);
-                        echo $name['fname']." ".$name['lname'];
-                    ?>
-                    </h5>
-                </div>
-            </div>
-            <span>Category: <?php echo $row['term']?></span>
-            <a href='chat.php?userid=<?php echo $row['username'] ?> '>Chat with Owner</a>
-        </div>
-        <div class="bottom">
-            <h4>Location</h4>
-            <div class="map" id="map" onclick="locateit(<?php echo $row['latitude'].','.$row['longitude'] ?>)">
-                
-            </div>
-        </div>
-    </div>
+      <div class="right">
+          <div class="top">
+              <div class="owner_profile">
+                  <div class="dp">
+                      <img src="../resource/images/user.png" alt="userprofile">
+                  </div>
+                  <div class="details">
+                      <h5>
+                      <?php
+                          $sql3="SELECT `fname`,`lname` FROM `users` WHERE `username`='".$row['username']."'";
+                          $result3=mysqli_query($conn, $sql3);
+                          $name=mysqli_fetch_assoc($result3);
+                          echo $name['fname']." ".$name['lname'];
+                      ?>
+                      </h5>
+                  </div>
+              </div>
+              <span>Category: <?php echo $row['term']?></span>
+              <a href='chat.php?userid=<?php echo $row['username'] ?> '>Chat with Owner</a>
+          </div>
+          <div class="bottom">
+              <h4>Location</h4>
+              <div class="map" id="map" onclick="locateit(<?php echo $row['latitude'].','.$row['longitude'] ?>)">
+                  
+              </div>
+          </div>
+      </div>
 
     </div>
 

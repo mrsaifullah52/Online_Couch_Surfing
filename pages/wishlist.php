@@ -40,19 +40,19 @@
       $count = mysqli_num_rows($result);
 
       if($count >= 1){
-        foreach($result as $couch){
+        foreach($result as $wishlist){
           echo '
           <li>
           <div class="listItem">
             <div class="details">
                 <h4 class="title">
-                  <a href="couchdetail.php?id='.$couch['id'].'">
-                    '.$couch['title'].'
+                  <a href="wishlistdetail.php?id='.$wishlist['id'].'">
+                    '.$wishlist['title'].'
                   </a>
                 </h4>
-              <h4 class="title">Location: '.$couch['city'].", ".$couch['country'].'</h4>
+              <h4 class="title">Location: '.$wishlist['city'].", ".$wishlist['country'].'</h4>
               <span class="date">
-              '.$couch['timestamp'].
+              '.$wishlist['timestamp'].
               '</span>
               <div class="actions">';
 
@@ -61,9 +61,9 @@
             </div>
           </div>';
               
-          if($couch['username']==$_SESSION['username']){
+          if($wishlist['username']==$_SESSION['username']){
             echo '
-            <a href="?del='.$couch['id'].'" class="del">
+            <a href="?del='.$wishlist['id'].'" class="del">
               <span class="material-icons">
                 delete_forever
               </span>
@@ -88,54 +88,23 @@
 
 <?php
 
-if(isset($_GET['wishlist'])){
-  $couchid=$_GET['wishlist'];
-  $username=$_SESSION['username'];
-
-  $sql1="SELECT `username`, `couchid` from `wishlist` where `username`='$username' AND `couchid`='$couchid' ";
-  $result=$conn->query($sql1);
-  $count=mysqli_num_rows($result);
-  if($count>0){
-    echo "
-    <script>
-      window.location.replace('couches.php');
-      alert('Already Exists.');
-    </script>";
-  }else{
-    $sql2="INSERT INTO `wishlist`(`username`, `couchid`) 
-    VALUES ('$username', '$couchid')";
-      if($conn->query($sql2)){
-        echo "
-          <script>
-            window.location.replace('couches.php');
-            alert('Added in wishlist');
-          </script>";
-      }else{  
-        echo "
-        <script>
-          window.location.replace('couches.php');
-          alert('Failed to Add.');
-        </script>";
-      }
-  }
-
-}else if(isset($_GET['del'])){
+  if(isset($_GET['del'])){
   $couchid=$_GET['del'];
   $username=$_SESSION['username'];
 
-  $sql1="DELETE FROM `couches` WHERE `id`='$couchid' AND `username`='$username' ";
+  $sql1="DELETE FROM `wishlists` WHERE `id`='$couchid' AND `username`='$username' ";
   $result=$conn->query($sql1);
 
   if($result){
     echo "
     <script>
-      window.location.replace('couches.php');
-      alert('Couch has been Deleted!!');
+      window.location.replace('wishlist.php');
+      alert('Wishlist has been Deleted!!');
     </script>";
   }else{
     echo "
     <script>
-      window.location.replace('couches.php');
+      window.location.replace('wishlist.php');
       alert('Failed to Delete.');
     </script>";
   }
