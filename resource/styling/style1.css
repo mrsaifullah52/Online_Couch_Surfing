@@ -885,4 +885,83 @@ cursor: pointer;
 .wishlists .material-icons:hover{
 background-color: rgb(60, 171, 175);
 }
+.wishlists .date{
+  position: absolute;
+  right: 20px;
+  top: 15px;
+}
 
+.wishlists .title a{
+  color: rgb(63, 185, 189);
+  text-decoration: none;
+  padding: 5px;
+}
+
+/* add wishlist */
+.addwishlist{
+  margin: 50px auto;
+  width: 50vw;
+  color: #fff;
+}
+.addwishlist input{
+   width: 100%;
+   margin-bottom: 20px;
+   border: none;
+   border-bottom: 1px solid #fff;
+   background: transparent;
+   outline: none;
+   height: 30px;
+   color: #fff;
+   font-size: 16px;
+}
+.addwishlist textarea{
+   background-color: rgb(96, 97, 102);
+   color: #fff;
+   border: none;
+   border-bottom: 2px solid #fff;
+   background: transparent;
+   outline: none;
+   width: 100%!important;
+   resize: none;
+}
+.addwishlist select{
+   outline: none;
+   background-color: rgb(96, 97, 102);
+   color: #fff;
+   height: 30px;
+   width: 84%;
+}
+.addwishlist input[type="file"]{
+   font-size: 14px;
+}
+ .addwishlist input[type="submit"]{
+   border: none;
+   outline: none;
+   height: 40px;
+   width: 80%;
+   color: #fff;
+   background: rgb(83, 225, 230);
+   font-size: 18px;
+   border-radius: 20px;
+   transition: .5s ease-in-out;
+   margin-left:  60px;
+ }
+ .addwishlist input[type="submit"]:hover{
+   background: rgb(63, 185, 189);
+   cursor: pointer;
+   transform: scale(1.03,1.03);
+ }
+
+.addwishlist .dateP, 
+.addwishlist .locationP{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.addwishlist .dateP div, 
+.addwishlist .locationP div{
+  width: 100%;
+  display: flex;
+  flex-direction: column; 
+}

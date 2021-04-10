@@ -22,8 +22,7 @@
 
       <?php
       $sql1="SELECT `id`, `title`, `status`, `timestamp` FROM `couches` WHERE `username`='".$_SESSION['username']."' ";
-      $result1 = mysqli_query($conn, $sql1);
-
+      $result1 = $conn->query($sql1);
       $count = mysqli_num_rows($result1);
 
     

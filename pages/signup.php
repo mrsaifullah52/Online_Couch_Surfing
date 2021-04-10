@@ -1,7 +1,7 @@
 <?php
 
 // accessing database
-include 'config/db.php';
+include '../config/db.php';
 session_start();
 
 
@@ -69,8 +69,8 @@ if( !empty($username) && !empty($fname) && !empty($lname) && !empty($email) && !
 
   if($result){
     session_start();
-    $_SESSION["username"]=$username;
-    $_SESSION["name"]=$fname;
+    $_SESSION['username'] = $username;
+    $_SESSION['name'] = $fname;
     $_SESSION['lname'] = $lname;
 
     echo "Account Created Successfully</br>";

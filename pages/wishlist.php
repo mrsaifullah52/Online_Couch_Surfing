@@ -24,7 +24,7 @@
           <span class="material-icons md-48">search</span>
         </div>
 
-        <a href="#">Add New</a>
+        <a href="addwishlist.php">Add New</a>
       </div>
   </form>
 
@@ -34,7 +34,7 @@
       <ul>
       <?php
 
-      $query_statement="SELECT `id`, `latitude`, `longitude`, `username`, `title`, `timestamp` FROM `couches` ";
+      $query_statement="SELECT `id`, `city`, `country`, `username`, `title`, `timestamp` FROM `wishlists` ";
       $result = mysqli_query($conn, $query_statement);
 
       $count = mysqli_num_rows($result);
@@ -50,7 +50,7 @@
                     '.$couch['title'].'
                   </a>
                 </h4>
-              <h4 class="title">Location: '.$couch['latitude']." ".$couch['longitude'].'</h4>
+              <h4 class="title">Location: '.$couch['city'].", ".$couch['country'].'</h4>
               <span class="date">
               '.$couch['timestamp'].
               '</span>

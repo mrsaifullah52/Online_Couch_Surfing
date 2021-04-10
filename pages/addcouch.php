@@ -144,7 +144,7 @@ if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['terms
       if(in_array($exten, $extension)){
         $location="public/images/".$index."/".$files.".".$exten;
         
-        move_uploaded_file($file_tmp, $location);
+        move_uploaded_file($file_tmp, '../'.$location);
 
         $conn->query("INSERT INTO `couchimages` (`couchid`, `imagelocation`)
                       VALUES ('$index', '$location') ");
@@ -159,7 +159,9 @@ if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['terms
         VALUES ('$username','$title','$description', '$terms', '$latitude', '$longitude')";
 
   if($conn->query($sql)){
-    echo "<script>alert('Couch has been added.')</script>";
+    echo "<script>alert('Couch has been added.')</script>
+    ".mysqli_error($conn)."
+    ";
   }else{
     echo "<script>alert('Failed to add, try again!!.')</script>";
 
