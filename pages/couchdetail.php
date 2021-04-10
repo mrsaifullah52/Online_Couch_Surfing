@@ -25,7 +25,7 @@
   include '../components/header.php';
 
   if(isset($_GET['id'])){
-        $sql1="SELECT `id`, `title`, `description`, `username`, `term`, `latitude`, `longitude`, `timestamp` FROM `couches` 
+        $sql1="SELECT `id`, `title`, `startdate`, `enddate`, `description`, `username`, `term`, `latitude`, `longitude`, `timestamp` FROM `couches` 
                     WHERE `id`='".$_GET['id']."'";
         $result1 = mysqli_query($conn, $sql1);
         $row = mysqli_fetch_array($result1);
@@ -59,14 +59,13 @@
               </div>
       
               <div class="buttons">
-                  
+                <p>
+                  <b>Duration:</b></br>
                   <?php 
-                      if($row['username']==$_SESSION['username']){
-                          echo '<span><a href="?booked='.$row['id'].'">Booked?</a></span>';
-                      }else{
-                          echo '<span><a href="?book='.$row['id'].'">Book Now</a></span>';
-                      }
+                    echo "From: ".$row['startdate']."</br>";
+                    echo "To: ".$row['enddate']."</br>";
                   ?>
+                </p>
               </div>
           </div>
 
@@ -100,12 +99,12 @@
                   </div>
               </div>
               <span>Category: <?php echo $row['term']?></span>
-              <a href='chat.php?userid=<?php echo $row['username'] ?> '>Chat with Owner</a>
+              <a href='chat.php?touser=<?php echo $row['username'] ?> '>Chat with Owner</a>
           </div>
           <div class="bottom">
               <h4>Location</h4>
-              <div class="map" id="map" onclick="locateit(<?php echo $row['latitude'].','.$row['longitude'] ?>)">
-                  
+              <div class="map" id="map">
+                <span onclick="locateit(<?php echo $row['latitude'].','.$row['longitude'] ?>)">Locate it</span>
               </div>
           </div>
       </div>

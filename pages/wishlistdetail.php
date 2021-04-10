@@ -76,7 +76,7 @@
                   </h5>
               </div>
           </div>
-          <a href='chat.php?userid=<?php echo $row['username'] ?> '>Chat with Owner</a>
+          <a href='chat.php?touser=<?php echo $row['username'] ?> '>Chat with Owner</a>
           <p>
             <b>Duration</b><br/>
             <b>From:</b> <?php echo $row['startdate']?><br/>
@@ -86,7 +86,7 @@
       <?php
         if($_SESSION['username'] != $row['username']){?>
       <!-- start condition -->
-        <div class="bottom">
+        <!-- <div class="bottom">
             <h4>Want to Offer?</h4>
             <form action="" method="POST">
               <label for="price">Cost:</label>
@@ -97,7 +97,7 @@
 
               <input type="submit" value="Send Offer">
             </form>
-        </div>
+        </div> -->
       <!-- end condition -->
       <?php
         }

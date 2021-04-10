@@ -28,6 +28,8 @@ while($row=mysqli_fetch_array($result)){
 
 echo json_encode($data);
 
+
+// reading
 if(isset($_GET['read'])  && $_GET['user']){
   if($_SESSION['username'] != $_GET['user']){
     $id=$_GET['read'];

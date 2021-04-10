@@ -30,7 +30,9 @@
 
   <div class="couches">
     <div class="list">
-      <h5>Wishlists</h5>
+      <h5>Wishlists </h5>
+
+
       <ul>
       <?php
 

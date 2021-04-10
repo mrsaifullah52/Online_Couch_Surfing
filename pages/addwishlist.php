@@ -19,8 +19,9 @@
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
 
-   <!-- jquery -->
-   <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" ></script>
+   <!-- jquery -->  
+   <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -51,19 +52,67 @@
       </div>
 
       <div class="locationP">
-        <div>
-          <label for="city">City</label>
-          <input type="text" name="city" placeholder="Write City Here"  required>
-        </div>
 
         <div>
           <label for="country">Country</label>
-          <input type="text" name="country" placeholder="Write Country Here"  required>
+          <select name="country" id="country">
+
+          </select>
+        </div>
+
+        <div>
+          <label for="city">City</label>
+          <select name="city" id="city">
+
+          </select>
         </div>
       </div>
 
+      <script>
+      $(function () {
+        $.ajax({
+        type: 'GET',
+        url: 'getcountry.php?req=country',
+        dataType: 'json',
+        success: function(result){
+          if(result){
+            result.forEach(item=>{
+              $("#country").append(renderOp(item));
+            });
+          }
+          }
+        });
+      });
+
+      $("#country").on("change",function(e){
+        $("#city").empty();
+        console.log(e.target.value);
+        country=e.target.value;
+        $.ajax({
+        type: 'GET',
+        url: 'getcountry.php?req=city&country='+country,
+        dataType: 'json',
+        success: function(result){
+          if(result){
+            result.forEach(item=>{
+              $("#city").append(renderOp(item));
+            });
+          }
+          }
+        });
+      });
+
+      function renderOp(item){
+        return `
+          <option value=${item}>
+              ${item}
+          </option>
+        `;
+      }
+      </script>
+
       <label for="description">Description:</label></br>
-      <textarea id="description" name="description" rows="4" cols="74" placeholder="Write Description About Your Wishlist" required></textarea>
+      <textarea id="description" maxlength="255" name="description" rows="4" cols="74" placeholder="Write Description About Your Wishlist" required></textarea>
       
       <label for="map">Set Your Location:</label>
       <div id="map">

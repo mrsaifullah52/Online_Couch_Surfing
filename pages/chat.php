@@ -54,7 +54,7 @@
               $count=$unreadcount[0];
               
               array_push($userslist, "
-              <li><a href='?touser=".$chatlist['touser']."'>".$name['fname']." ".$name['lname']."</a><span id=read>".$count."</span></li>
+              <li><a href='?touser=".$chatlist['touser']."'>".$name['fname']." ".$name['lname']."</a><span id=read>(".$count.")</span></li>
             ");
             }
           }
@@ -69,7 +69,7 @@
               $count=$unreadcount[0];
 
               array_push($userslist, "
-              <li><a href='?touser=".$chatlist['fromuser']."'>".$name['fname']." ".$name['lname']."</a><span id=read>".$count."</span></li>
+              <li><a href='?touser=".$chatlist['fromuser']."'>".$name['fname']." ".$name['lname']."</a><span id=read>(".$count.")</span></li>
             ");
             }
           }
@@ -121,7 +121,7 @@
   <!-- jquery -->
   <script>
     const chatbox=document.querySelector(".messages ul");
-    let start=1;
+    let start=0;
       $(function () {
         $('form').on('submit', function (value) {
           value.preventDefault();
@@ -173,7 +173,7 @@
                 ${item.fromuser}
               </h6>
               <span id="date">
-                ${item.datentime}
+                ${item.timestamp}
               </span>
             </div>
 
@@ -202,7 +202,7 @@
                 ${item.fromuser}
               </h6>
               <span id="date">
-                ${item.datentime}
+                ${item.timestamp}
               </span>
             </div>
 
@@ -212,7 +212,6 @@
         }
 
       }
-
 
       function msgRead(id, user){
         $(function () {

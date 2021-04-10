@@ -37,8 +37,20 @@
         <label for="title">Title</label>
         <input type="text" name="title" placeholder="Write Title Here"  required>
 
+        <div class="dateP">
+          <div>
+            <label for="sdate">Starting Date</label>
+            <input type="date" name="sdate" min="1997-01-01" max="2030-12-31" required>
+          </div>
+          
+          <div>
+            <label for="edate">Ending Date</label>
+            <input type="date" name="edate" min="1997-01-01" max="2030-12-31" required>
+          </div>
+        </div>
+
         <label for="description">Description:</label></br>
-        <textarea id="description" name="description" rows="4" cols="74" placeholder="Write Description About Your Couch" required></textarea>
+        <textarea id="description" maxlength="255" name="description" rows="4" cols="74" placeholder="Write Description About Your Couch" required></textarea>
     
         <label for="description">Select Picture(one or multiple):</label></br>
         <input type="file" id="imageFiles" name="imageFiles[]" multiple required>
@@ -53,15 +65,11 @@
         </div>
         
         <label for="map">Set Your Location:</label>
-
-
         <div id="map">
           <span>Click here to set your Current Location</span>
           <input type="hidden" name="latitude" id="latitude"/>
           <input type="hidden" name="longitude" id="longitude"/>
         </div>
-
-
 
         <input type="submit" value="Add Couch Details"/>
     </form>
@@ -122,13 +130,15 @@ foreach($ind as $i){
   $index=$i['id'];
 }
 
-if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['terms']) ){
+if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['sdate']) && isset($_POST['edate']) && isset($_POST['terms']) ){
   $username =$_POST['username'];
   $title =$_POST['title'];
   $description =$_POST['description'];
   $terms =$_POST['terms'];
   $latitude =$_POST['latitude'];
   $longitude =$_POST['longitude'];
+  $sdate =$_POST['sdate'];
+  $edate =$_POST['edate'];
 
   $index++;
   mkdir("../public/images/".$index);
@@ -155,8 +165,8 @@ if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['terms
     }
   }
 
-  $sql="INSERT INTO `couches`(`username`, `title`, `description`, `term`, `latitude`, `longitude`) 
-        VALUES ('$username','$title','$description', '$terms', '$latitude', '$longitude')";
+  $sql="INSERT INTO `couches`(`username`, `startdate`,`enddate`, `title`, `description`, `term`, `latitude`, `longitude`) 
+        VALUES ('$username', '$sdate', '$edate','$title','$description', '$terms', '$latitude', '$longitude')";
 
   if($conn->query($sql)){
     echo "<script>alert('Couch has been added.')</script>
