@@ -22,7 +22,7 @@
 ?> 
 
 <div class="wishlists">
-  <form action="" Method="GET">  
+  <form action="" Method="GET">
     <div class="boxcontainer">
       <div class="elementcontainer" >
         <div>
@@ -95,11 +95,8 @@
     <div class="list">
       <h5>Wishlists </h5>
 
-
       <ul>
       <?php
-
-
         if(isset($_GET['country']) && isset($_GET['city']) ){
           $country=$_GET['country'];
           $city=$_GET['city'];
@@ -111,7 +108,6 @@
           if($cou>0){
             // if user search something
             showdata($res, $conn);
-              
           }else{
             echo "No Result Found, try again with different query.";
           }
@@ -119,8 +115,6 @@
           // if user didnt search
           showdata(null, $conn);
         }
-
-
       function showdata($row, $con){
         if($row == null){
           $query_statement="SELECT `id`, `city`, `country`, `username`, `title`, `timestamp` FROM `wishlists` ";
@@ -128,9 +122,7 @@
         }else{
           $result = $row;
         }
-
         $count = mysqli_num_rows($result);
-
         if($count > 0){
           foreach($result as $wishlist){
             echo '
@@ -142,14 +134,11 @@
                       '.$wishlist['title'].'
                     </a>
                   </h4>
-                <h4 class="title">Location: '.$wishlist['city'].", ".$wishlist['country'].'</h4>
+                 <h4 class="title">Location: '.$wishlist['city'].", ".$wishlist['country'].'</h4>
                 <span class="date">
                 '.$wishlist['timestamp'].
                 '</span>
-                <div class="actions">';
-
-                  echo
-                '</div>
+                <div class="actions"></div>
               </div>
             </div>';
                 

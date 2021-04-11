@@ -118,11 +118,6 @@ li .listItem{
   right: 20px;
 }
 
-
-
-
-
-
 .list li{
   position: relative;
 }
@@ -173,6 +168,15 @@ li .listItem{
   color: rgb(60, 171, 175);
   padding: 15px;
 }
+.list li{
+  position: relative;
+}
+.listItem .date{
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
 /* profile page */
 .profile .image{
   width: 100%;
