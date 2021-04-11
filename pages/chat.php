@@ -162,7 +162,7 @@
 
       function renderData(item){
         const user="<?php echo $_SESSION['username'] ?>";
-        if(item.fromuser === user ){
+        if(item.fromuser == user ){
 
           chatbox.scrollIntoView(false,{behavior: "smooth"});
           msgRead(item.id, item.fromuser);
@@ -214,12 +214,14 @@
       }
 
       function msgRead(id, user){
+        const url=`getChat.php?read=${id}&user=${user}`;
         $(function () {
           $.ajax({
-            type: 'POST',
-            url: 'getChat.php?read='+id+'&user='+user,
+            type: 'GET',
+            url: url,
             success: function () {
               // do update after message sent
+              // console.log("message read: "+id);
             }});
         });
       }
