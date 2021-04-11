@@ -18,8 +18,9 @@
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
 
-   <!-- jquery -->
-   <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" ></script>
+   <!-- jquery -->  
+   <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   </head>
 <body>
@@ -35,7 +36,7 @@
         <input type="hidden" name="username" value="<?php echo $_SESSION['username'] ?>"  required/>
 
         <label for="title">Title</label>
-        <input type="text" name="title" placeholder="Write Title Here"  required>
+        <input type="text" name="title" placeholder="Write Title Here"  required maxlength="100" >
 
         <div class="dateP">
           <div>
@@ -48,6 +49,65 @@
             <input type="date" name="edate" min="1997-01-01" max="2030-12-31" required>
           </div>
         </div>
+
+        <div class="locationP">
+          <div>
+            <label for="country">Country</label>
+            <select name="country" id="country">
+            </select>
+          </div>
+
+          <div>
+            <label for="city">City</label>
+            <select name="city" id="city">
+              <option>Select Country First</option>
+            </select>
+          </div>
+        </div>
+
+     <!-- jquery for dynamic city names -->
+     <script>
+      $(function () {
+        $.ajax({
+        type: 'GET',
+        url: 'getcountry.php?req=country',
+        dataType: 'json',
+        success: function(result){
+          if(result){
+            result.forEach(item=>{
+              $("#country").append(renderOp(item));
+            });
+          }
+          }
+        });
+      });
+
+      $("#country").on("change",function(e){
+        $("#city").empty();
+        console.log(e.target.value);
+        country=e.target.value;
+        $.ajax({
+        type: 'GET',
+        url: 'getcountry.php?req=city&country='+country,
+        dataType: 'json',
+        success: function(result){
+          if(result){
+            result.forEach(item=>{
+              $("#city").append(renderOp(item));
+            });
+          }
+          }
+        });
+      });
+
+      function renderOp(item){
+        return `
+          <option value=\"${item}\">
+              ${item}
+          </option>
+        `;
+      }
+      </script>
 
         <label for="description">Description:</label></br>
         <textarea id="description" maxlength="255" name="description" rows="4" cols="74" placeholder="Write Description About Your Couch" required></textarea>
@@ -76,7 +136,7 @@
 
   </div>
 
-
+<!-- jquery and map for map -->
 <script>
 let marker;
 function getLocation() {
@@ -115,9 +175,6 @@ function showPosition(position) {
 
 
 </script>
-
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_6-kYEtJliZDcM9iFCyUPpwinM7Gu9mA&callback=myMap"></script> -->
-
 </body>
 </html>
 
@@ -130,13 +187,16 @@ foreach($ind as $i){
   $index=$i['id'];
 }
 
-if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['sdate']) && isset($_POST['edate']) && isset($_POST['terms']) ){
+if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['sdate']) && isset($_POST['edate']) && isset($_POST['terms']) 
+          && isset($_POST['country']) && isset($_POST['city'])){
   $username =$_POST['username'];
   $title =$_POST['title'];
   $description =$_POST['description'];
   $terms =$_POST['terms'];
   $latitude =$_POST['latitude'];
   $longitude =$_POST['longitude'];
+  $country =$_POST['country'];
+  $city =$_POST['city'];
   $sdate =$_POST['sdate'];
   $edate =$_POST['edate'];
 
@@ -165,8 +225,9 @@ if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['sdate
     }
   }
 
-  $sql="INSERT INTO `couches`(`username`, `startdate`,`enddate`, `title`, `description`, `term`, `latitude`, `longitude`) 
-        VALUES ('$username', '$sdate', '$edate','$title','$description', '$terms', '$latitude', '$longitude')";
+  $sql="INSERT INTO `couches`(`username`, `startdate`, `enddate`, `title`, `description`, `term`, `latitude`, `longitude`, `country`, 
+                    `city`)
+        VALUES ('$username', '$sdate', '$edate','$title','$description', '$terms', '$latitude', '$longitude', '$country', '$city')";
 
   if($conn->query($sql)){
     echo "<script>alert('Couch has been added.')</script>

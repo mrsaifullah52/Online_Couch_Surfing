@@ -8,6 +8,11 @@
   <link rel="stylesheet" href="../resource/styling/style1.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+
+     <!-- jquery -->  
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
 </head>
 <body>
 
@@ -17,16 +22,75 @@
 ?> 
 
 <div class="couches">
-  <form action="search">  
+  <form action="" Method="GET">  
       <div class="boxcontainer">
         <div class="elementcontainer" >
-          <input type="text" placeholder="You Can Search Here." name="search" class="search"></td>
-          <span class="material-icons md-48">search</span>
+
+          <div>
+            <div>
+              <select name="country" id="country">
+                <option>Select Country</option>
+              </select>
+
+              <select name="city" id="city">
+                <option>Select City</option>
+              </select>
+            </div>
+
+            <!-- <input type="text" placeholder="You Can Search Here." name="search" class="search"> -->
+          </div>
+
+          <button type="submit">
+            <span class="material-icons md-48">search</span>
+          </button>
         </div>
 
         <a href="addcouch.php">Add Couch</a>
       </div>
   </form>
+     <!-- jquery for dynamic city names -->
+     <script>
+      $(function () {
+        $.ajax({
+        type: 'GET',
+        url: 'getcountry.php?req=country',
+        dataType: 'json',
+        success: function(result){
+          if(result){
+            result.forEach(item=>{
+              $("#country").append(renderOp(item));
+            });
+          }
+          }
+        });
+      });
+
+      $("#country").on("change",function(e){
+        $("#city").empty();
+        console.log(e.target.value);
+        country=e.target.value;
+        $.ajax({
+        type: 'GET',
+        url: 'getcountry.php?req=city&country='+country,
+        dataType: 'json',
+        success: function(result){
+          if(result){
+            result.forEach(item=>{
+              $("#city").append(renderOp(item));
+            });
+          }
+          }
+        });
+      });
+
+      function renderOp(item){
+        return `
+          <option value=\"${item}\">
+              ${item}
+          </option>
+        `;
+      }
+      </script>
 
   <div class="couches">
     <div class="list">
@@ -34,16 +98,42 @@
       <ul>
       <?php
 
-      $query_statement="SELECT `id`, `username`, `title`, `timestamp` FROM `couches` ";
-      $result = mysqli_query($conn, $query_statement);
+    if(isset($_GET['country']) && isset($_GET['city']) ){
+      $country=$_GET['country'];
+      $city=$_GET['city'];
+      // WHERE (CustomerName LIKE 'a%') AND (Address LIKE 'O%')
+      $search="SELECT `id`, `username`, `title`, `timestamp` FROM `couches` 
+              WHERE (`country` LIKE '$country%') AND (`city` LIKE '$city%')";
+      $res=$conn->query($search);
+      $cou=mysqli_fetch_row($res);
+      if($cou>0){
+        // if user search something
+        showdata($res, $conn);
+          
+      }else{
+        echo "No Result Found, try again with different query.";
+      }
+    }else{
+      // if user didnt search
+      showdata(null, $conn);
+    }
+      
 
+    function showdata($row, $con){
+      if($row == null){
+        $query_statement="SELECT `id`, `username`, `title`, `timestamp` FROM `couches` ";
+        $result = $con->query($query_statement);
+      }else{
+        $result = $row;
+      }
+      
       $count = mysqli_num_rows($result);
 
-      if($count >= 1){
+      if($count > 0){
         foreach($result as $couch){
 
           $sql2="SELECT `imagelocation` FROM `couchimages` WHERE `couchid`='".$couch['id']."' ";
-          $result2 = mysqli_query($conn, $sql2);
+          $result2 = $con->query($sql2);
 
           echo '
           <li>
@@ -59,9 +149,7 @@
             </div>
             <div class="details">
               <h4 class="title"><a href="couchdetail.php?id='.$couch['id'].'">'.$couch['title'].'</a></h4>
-              <span id="date">'.$couch['timestamp'].'</span>';
-
-                echo'
+              <span id="date">'.$couch['timestamp'].'</span>
             </div>
           </div>';
 
@@ -80,7 +168,7 @@
       }else{
         echo "Result not found.";
       }
-      
+    }
       ?>
       </ul>
     </div>  
