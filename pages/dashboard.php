@@ -20,11 +20,13 @@
 
 <div class="dashboard">
   <div class="list">
-    <h5>My Couches</h5>
+    <h5><a href="mycouches.php" style="color:rgb(83, 225, 230)">My Couches</a> | <a href="mywishlists.php" style="color:rgb(83, 225, 230)">My Wishlists</a></h5>
+
+
     <ul>
 
     <?php
-    $couches1="SELECT `id`, `username`, `title`, `status`, `timestamp` FROM `couches` WHERE `username`='".$_SESSION['username']."' ";
+    $couches1="SELECT `id`, `username`, `city`, `country`, `title`, `status`, `timestamp` FROM `couches` WHERE `username`='".$_SESSION['username']."' ";
     $couchesres1 = $conn->query($couches1);
     $couchcount = mysqli_num_rows($couchesres1);
     if($couchcount > 0){
@@ -43,6 +45,7 @@
           </div>
           <div class="details">
             <h4 class="title"><a href="couchdetail.php?id='.$couch['id'].'">'.$couch['title'].'</a></h4>
+            <h4 class="title">Location: '.$couch['city'].", ".$couch['country'].'</h4>
             <span id="date">'.$couch['timestamp'].'</span>
           </div>
         </div>';

@@ -37,7 +37,7 @@
               </select>
             </div>
 
-            <!-- <input type="text" placeholder="You Can Search Here." name="search" class="search"> -->
+            <input type="text" placeholder="You Can Search Here." name="q" class="search">
           </div>
 
           <button type="submit">
@@ -45,7 +45,7 @@
           </button>
         </div>
 
-        <a href="addcouch.php">Add Couch</a>
+        <a href="addcouch.php">Add New Couch</a>
       </div>
   </form>
      <!-- jquery for dynamic city names -->
@@ -98,12 +98,12 @@
       <ul>
       <?php
 
-    if(isset($_GET['country']) && isset($_GET['city']) ){
+    if(isset($_GET['country']) && isset($_GET['city']) && isset($_GET['q'])){
       $country=$_GET['country'];
       $city=$_GET['city'];
-      // WHERE (CustomerName LIKE 'a%') AND (Address LIKE 'O%')
+      $query=$_GET['q'];
       $search="SELECT `id`, `username`, `title`, `timestamp` FROM `couches` 
-              WHERE (`country` LIKE '$country%') AND (`city` LIKE '$city%')";
+              WHERE ( (`country` LIKE '$country%') AND (`city` LIKE '$city%') ) AND ( `title` LIKE '%$query%' ) ";
       $res=$conn->query($search);
       $cou=mysqli_fetch_row($res);
       if($cou>0){
@@ -121,7 +121,7 @@
 
     function showdata($row, $con){
       if($row == null){
-        $query_statement="SELECT `id`, `username`, `title`, `timestamp` FROM `couches` ";
+        $query_statement="SELECT `id`, `country`,`city`,`username`, `title`, `timestamp` FROM `couches` ";
         $result = $con->query($query_statement);
       }else{
         $result = $row;
@@ -149,6 +149,7 @@
             </div>
             <div class="details">
               <h4 class="title"><a href="couchdetail.php?id='.$couch['id'].'">'.$couch['title'].'</a></h4>
+              <h4 class="title">Location: '.$couch['city'].", ".$couch['country'].'</h4>
               <span id="date">'.$couch['timestamp'].'</span>
             </div>
           </div>';

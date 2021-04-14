@@ -76,7 +76,11 @@
                   </h5>
               </div>
           </div>
-          <a href='chat.php?touser=<?php echo $row['username'] ?> '>Chat with Owner</a>
+          <?php
+            if($_SESSION['username'] != $row['username'])
+              echo "<a href=\"chat.php?touser=".$row['username']."\">Chat with Owner</a>";
+          ?>
+          
           <p>
             <b>Duration</b><br/>
             <b>From:</b> <?php echo $row['startdate']?><br/>
@@ -86,10 +90,11 @@
       <?php
         if($_SESSION['username'] != $row['username']){?>
       <!-- start condition -->
-        <!-- <div class="bottom">
+        <div class="bottom">
             <h4>Want to Offer?</h4>
             <form action="" method="POST">
               <label for="price">Cost:</label>
+              <input type="hidden" name="owner" value="<?php echo $row['username']?>">
               <input type="text" name="price" placeholder="Enter your Charges" id="price">
 
               <label for="details">Details:</label>
@@ -97,9 +102,11 @@
 
               <input type="submit" value="Send Offer">
             </form>
-        </div> -->
+        </div>
       <!-- end condition -->
       <?php
+        }else{
+          echo"<a href=\"checkwishlistoffers.php?wishlist={$_GET['id']}\">Check Offers</a>";
         }
       ?>
   </div>
@@ -129,15 +136,21 @@
 if(isset($_POST['price']) && isset($_POST['details']) ){
   $price=$_POST['price'];
   $details=$_POST['details'];
+  $owner=$_POST['owner'];
 
-  $sql="INSERT INTO `wishlistoffers` (`personid`,`wishlistid`, `price`, `details`) 
-        VALUES( '{$_SESSION['username']}', '{$_GET['id']}', '$price', '$details')";
+  $sql="INSERT INTO `wishlistoffers` (`personid`, `owner`, `wishlistid`, `price`, `details`) 
+        VALUES( '{$_SESSION['username']}', '$owner', '{$_GET['id']}', '$price', '$details')";
 
   $result=$conn->query($sql);
   if($result){
     echo "
     <script>
       alert('Your offer has been sent!!');
+    </script>";
+  }else{
+    echo "
+    <script>
+      alert('Failed to send your offer!!');
     </script>";
   }
 

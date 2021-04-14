@@ -22,7 +22,7 @@ if( isset($_POST['Email']) && isset( $_POST['Password'] ) ){
         $_SESSION['name'] = $row['fname'];
         $_SESSION['lname'] = $row['lname'];
         
-        echo "</br> user Logged in <script>window.location.replace('../pages/dashboard.php')</script>";
+        echo "</br> user Logged in <script>window.location.replace('../pages/mycouches.php')</script>";
     
     }else{
         echo "<script>window.location.replace('../index.php'); alert('Authentication Failed, try again. ')</script>";

@@ -116,7 +116,7 @@
       <textarea id="description" maxlength="255" name="description" rows="4" cols="74" placeholder="Write Description About Your Wishlist" required></textarea>
       
       <label for="map">Set Your Location:</label>
-      <div id="map">
+      <div id="map" style="height:200px;margin:10px 0px">
         <span>Click here to set your Current Location</span>
         <input type="hidden" name="latitude" id="latitude"/>
         <input type="hidden" name="longitude" id="longitude"/>

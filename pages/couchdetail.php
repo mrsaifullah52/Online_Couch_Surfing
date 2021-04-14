@@ -59,19 +59,18 @@
               </div>
       
               <div class="buttons">
-                <p>
-                  <b>Duration:</b></br>
-                  <?php 
-                    echo "From: ".$row['startdate']."</br>";
-                    echo "To: ".$row['enddate']."</br>";
-                  ?>
-                </p>
+
+                <h4>Location: </h4>
+                <div class="map" id="map">
+                  <span onclick="locateit(<?php echo $row['latitude'].','.$row['longitude'] ?>)">Locate it</span>
+                </div>
+
               </div>
           </div>
 
           <div class="details">                      
               <div class="title"> 
-                  <h3> <?php echo $row['title'] ?> </h3>
+                  <h3> <?php echo $row['title'] . " - " . $row['term'] ?> </h3>
               </div>
               <div class="description">
                   <h4>Couch Details</h4>
@@ -98,15 +97,42 @@
                       </h5>
                   </div>
               </div>
-              <span>Category: <?php echo $row['term']?></span>
-              <a href='chat.php?touser=<?php echo $row['username'] ?> '>Chat with Owner</a>
+              <!-- <span>Category: <?php echo $row['term']?></span> -->
+              <?php
+                if($_SESSION['username'] != $row['username'])
+                  echo "<a href=\"chat.php?touser=".$row['username']."\">Chat with Owner</a>";
+              ?>
           </div>
           <div class="bottom">
-              <h4>Location</h4>
-              <div class="map" id="map">
-                <span onclick="locateit(<?php echo $row['latitude'].','.$row['longitude'] ?>)">Locate it</span>
+              <p>
+                <b>Duration</b><br/>
+                <b>From:</b> <?php echo $row['startdate']?><br/>
+                <b>To:</b> <?php echo $row['enddate']?>
+              </p>
+
+
+              <?php
+              if($_SESSION['username'] != $row['username']){?>
+            <!-- start condition -->
+              <div class="bottom">
+                  <h4>Want to Offer?</h4>
+                  <form action="" method="POST">
+                    <label for="price">Cost:</label>
+                    <input type="text" name="price" placeholder="Enter your Charges" id="price">
+
+                    <label for="details">Details:</label>
+                    <textarea name="details" id="details" rows="5" cols="22" placeholder="Enter Extra Details if you have any"></textarea>
+
+                    <input type="submit" value="Send Offer">
+                  </form>
               </div>
+            <!-- end condition -->
+            <?php
+                }
+              ?>
           </div>
+
+
       </div>
 
     </div>
@@ -181,6 +207,23 @@ if(isset($_GET['book'])){
     <script>
       window.location.replace('couches.php');
       alert('Failed to Delete.');
+    </script>";
+  }
+}
+
+// send offer
+if(isset($_POST['price']) && isset($_POST['details']) ){
+  $price=$_POST['price'];
+  $details=$_POST['details'];
+
+  $sql="INSERT INTO `wishlistoffers` (`personid`,`wishlistid`, `price`, `details`) 
+        VALUES( '{$_SESSION['username']}', '{$_GET['id']}', '$price', '$details')";
+
+  $result=$conn->query($sql);
+  if($result){
+    echo "
+    <script>
+      alert('Your offer has been sent!!');
     </script>";
   }
 

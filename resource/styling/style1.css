@@ -229,6 +229,18 @@ li .listItem{
 }
 
 
+/* .dashboard .containerr{
+  display: grid;
+  grid-template-columns: auto 300px;
+}
+.dashboard .containerr ul{
+  width: 100%;
+}
+
+.dashboard .containerr .reservations{
+  width: 100%;
+} */
+
 /* couches page */
 .couches form{
   width: 78%;
@@ -248,6 +260,7 @@ li .listItem{
   color: #fff;
   text-decoration: none;
   padding: 5px;
+  text-align: center;
 }
 
 .elementcontainer{
@@ -260,11 +273,11 @@ li .listItem{
   grid-template-columns: auto 50px;
 }
 .search{
-margin: 5px 10px;
+margin: 5px 0px;
 border: none;
 outline: none;
 width: 100%;
-padding: 0px 10px;
+padding: 0px 10px 0px 0px;
 border-radius: 50px;
 font-size: 18px;
 font-family: Arial;
@@ -276,7 +289,6 @@ text-align: center;
 font-size: 26px;
 color: #fff;
 }
-
 /* add couch page */
 .addcouch{
  margin: 50px auto;
@@ -369,7 +381,7 @@ color: #fff;
 
 }
 
-/* couchedetail page */
+/* couchdetail page */
 
 .parent{
   width: 80%;
@@ -390,14 +402,15 @@ grid-template-rows: 300px auto;
   background-color: #fff;
   width: 100%;
   display: grid;
-  grid-template-columns: auto 150px;
+  grid-template-columns: auto 250px;
 }
+
 .buttons{
   background-color: #fff;
   display: flex;
   flex-direction: column;
   z-index: 1000;
-  height: 90%;
+  height: 96%;
 }
 .buttons span{
   display: inline-block;
@@ -538,7 +551,7 @@ margin: 0px 15px;
 .parent .bottom .map{
   position: relative;
   margin-top: 20px;
-  height: 250px;
+  height: 100%;
 }
 .parent .bottom .map span{
  padding: 10px;
@@ -565,6 +578,30 @@ margin: 0px 15px;
 }
 .details .description{
   padding: 10px 15px;
+}
+
+.parent .right .bottom input[type="text"]{
+  padding: 5px;
+  outline: none;
+  margin: 8px 0px;
+  border: 0.5px solid rgb(83, 225, 230);
+}
+.parent .right .bottom textarea{
+  resize: none;
+  padding: 5px;
+  outline: none;
+  margin: 8px 0px;
+  border: 0.5px solid rgb(83, 225, 230);
+}
+
+.parent .right .bottom input[type="submit"]{
+  width: 100%;
+  height: 30px;
+  color: #fff;
+  background-color: rgb(83, 225, 230);
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 /* login page */
@@ -687,7 +724,7 @@ margin: 0px 15px;
   text-decoration: none;
   color: #fff;
   display: inline-block;
-  padding: 10px 50px;
+  padding: 10px 20px;
 }
 .chat .left ul li:hover{
   background-color: rgb(50, 143, 146);
@@ -775,21 +812,24 @@ margin: 0px 15px;
   color: #fff;
 }
 
-
-
 /* leaflet.js map library */
 #map { 
-  height: 250px;
+  height: 100%;
   width: 100%;
-  margin:15px 0px;
+  /* margin: 15px 0px; */
   border: 1px solid rgb(60, 171, 175);
   cursor: pointer;
+  z-index: -0!important;
  }
 #map span{
+  z-index: 1000!important;
   cursor: pointer;
   display: inline-block;
   text-align: center;
-  padding-top: 10%;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  color: rgb(83, 225, 230);
 }
 
 /* signup page */
@@ -883,13 +923,14 @@ input[ type="radio"] label{
 
 /* wishlist */
 .wishlists li{
+  list-style-type: none;
   position:relative;
   overflow: hidden;
 }
 .wishlists li .del{
   position: absolute;
   right: 10px;
-  top: 10px;
+  top: 15px;
   border-top-right-radius: 14px;
   overflow: hidden;
 }
@@ -900,6 +941,23 @@ input[ type="radio"] label{
 .wishlists li .del span:hover{
   color: rgb(167, 7, 7);
   background-color: transparent;
+}
+
+.offerslist{
+  margin: 10px 0px;
+  border-radius: 15px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+}
+.offerslist .offer{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 15px;
+}
+.offerslist .wish{
+  width: 100%;
 }
 .wishlists form{
   width: 78%;
@@ -919,6 +977,7 @@ input[ type="radio"] label{
   color: #fff;
   text-decoration: none;
   padding: 5px;
+  text-align: center;
 }
 
 .wishlists .elementcontainer{
@@ -948,7 +1007,7 @@ input[ type="radio"] label{
 }
 
 .wishlists .search{
-margin: 5px 10px;
+margin: 5px 0px;
 border: none;
 outline: none;
 width: 100%;
@@ -976,7 +1035,6 @@ color: #fff;
   text-decoration: none;
   padding: 5px;
 }
-
 
 
 /* add wishlist */
@@ -1065,9 +1123,12 @@ color: #fff;
 }
 
 .wishlistdetail #map{
-  margin-top: 0px;
+  height: 250px!important;
 }
-
+.wishlistdetail #map span{
+  width: 80px;
+  height: 40px;
+}
 .wishlistdetail .right{
   height: 100vh;
   background-color: #f3f2f2;
@@ -1078,15 +1139,17 @@ color: #fff;
   flex-direction: column;
 }
 
-.wishlistdetail .right .top a{
+.wishlistdetail .right .top a, .wishlistdetail .right a{
+  text-align: center;
+  width: 100%;
   text-decoration: none;
   color: #fff;
   display: inline-block;
   background-color: rgb(83, 225, 230);
   padding: 8px 15px;
-  margin: 2px;
+  margin: 10px 2px;
 }
-.wishlistdetail .right .top a:hover{
+.wishlistdetail .right .top a:hover, .wishlistdetail .right a:hover{
   background-color: rgb(63, 176, 180);
 }
 
@@ -1165,4 +1228,57 @@ color: #fff;
 .bigmap span:hover{
   background-color: rgb(154, 209, 211);
   color: #fff;
+}
+/* wishlist offers list*/
+.wishlistoffers{
+  width: 100%;
+}
+.wishlistoffers h1{ 
+  text-align: center;
+  color: #fff;
+}
+.wishlistoffers ul{
+  display: flex;
+  flex-direction: column;
+}
+.wishlistoffers li{
+  width: 100%;
+  list-style-type: none;
+  margin: 10px 0px;
+  background-color: #fff;
+}
+.offerbox{
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+} 
+.offerbox .details{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.offerbox .actions{
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+}
+.offerbox div a{
+  text-decoration: none;
+  text-align: center;
+  margin: 5px;
+  display: inline-block;
+  padding: 10px 15px;
+  color: #fff;
+  background-color: rgb(83, 225, 230);
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.offerbox .details span{
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  color: rgb(155, 155, 155);
+  font-size: 12px;
 }
