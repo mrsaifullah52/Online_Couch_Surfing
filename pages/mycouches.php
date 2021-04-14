@@ -85,3 +85,30 @@
 
 </body>
 </html>
+
+<?php
+
+if(isset($_GET['del'])){
+  $couchid=$_GET['del'];
+  $username=$_SESSION['username'];
+
+  $sql1="UPDATE `couches` SET `status`='unavailable' WHERE `id`='$couchid' AND `username`='$username' ";
+  $result=$conn->query($sql1);
+
+  if($result){
+    echo "
+    <script>
+      window.location.replace('mycouches.php?show=active');
+      alert('Couch has been Deleted!!');
+    </script>";
+  }else{
+    echo "
+    <script>
+      window.location.replace('mycouches.php?show=active');
+      alert('Failed to Delete.');
+    </script>";
+  }
+
+}
+
+?>

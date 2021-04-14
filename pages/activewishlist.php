@@ -7,7 +7,7 @@
   }
 </style>
 
-  <form action="?show=active&" Method="GET">
+  <form action="" Method="GET">
     <div class="boxcontainer">
       <div class="elementcontainer" >
         <div>
@@ -35,9 +35,6 @@
   </form>
 
   <div class="list">
-
-    <!-- <h5><a href="wishlist.php?show=active" class="active">Active</a> | <a href="wishlist.php?show=offers" class="offers">Sent offers</a></h5>
-   -->
   <ul>
   <?php
 
@@ -66,7 +63,7 @@
         function showdata($row, $con){
           if($row == null){
             $query_statement="SELECT `id`, `city`, `country`, `username`, `title`, `timestamp` FROM `wishlists`
-                              WHERE `status`='available' ";
+                              WHERE (`status`='available') OR (NOT `status`='available' AND `username`='{$_SESSION['username']}' ) ";
             $result = mysqli_query($con, $query_statement);
           }else{
             $result = $row;

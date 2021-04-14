@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wishlist offers</title>
+  <title>Couche offers</title>
 <!-- style sheets -->
   <link rel="stylesheet" href="../resource/styling/style1.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -32,14 +32,14 @@
 
   <div class="wishlistoffers">
     <div class="container">
-      <h1>Wishlist Offers</h1>
+      <h1>Couche Offers</h1>
       <ul>
 
       <?php
       $username=$_SESSION['username'];
-      if(isset($_GET['wishlist'])){
-        $id=$_GET['wishlist'];
-        $sql="SELECT * FROM `wishlistoffers` WHERE `id`={$id} AND `owner`='{$username}' ";
+      if(isset($_GET['couch'])){
+        $id=$_GET['couch'];
+        $sql="SELECT * FROM `couchoffers` WHERE `couchid`='$id' AND `owner`='$username' ";
         $result=$conn->query($sql);
         $count=mysqli_fetch_row($result);
         if($count>0){
@@ -68,8 +68,8 @@
 <?php
   function showlist($offe, $status, $con){
     echo "
-    <li>
-      <div class=\"offerbox $status\">
+    <li class=\"$status\">
+      <div class=\"offerbox\">
         <div class=\"details\">
           <h4>Cost: ".$offe['price']." Rupee</h4>
           <p>".$offe['details']."</p>";
@@ -79,10 +79,17 @@
           $name=mysqli_fetch_assoc($result1);
           echo "<span>Sent By: ".$name['fname'] ." ". $name['lname']."</span>";
 
-        echo "</div>
-        <div class=\"actions\">
-          <a href=\"?wishlist=3&status=accepted&id={$offe['id']}\">Accept it</a>
-          <a href=\"?wishlist=3&status=reject&id={$offe['id']}\">Reject it</a>
+          echo "</div>
+          <div class=\"actions\">";
+          
+          if($status=="accepted"){
+            echo "
+            <a href=\"?couch={$offe['couchid']}&status=accepted&id={$offe['id']}\">Accepted</a>";
+          }else{
+            echo "
+            <a href=\"?couch={$offe['couchid']}&status=accepted&id={$offe['id']}\">Accept it</a>";
+          }
+          echo "<a href=\"?couch={$offe['couchid']}&status=reject&id={$offe['id']}\">Reject it</a>
         </div>
       </div>
     </li>
@@ -94,21 +101,21 @@
   if( isset($_GET['status']) && isset($_GET['id'] )){
     $st=$_GET['status'];
     $id=$_GET['id'];
-    $wishlistid=$_GET['wishlist'];
-    $status=$conn->query("UPDATE `wishlistoffers` SET `status`='$st' WHERE `id`=$id ");
+    $couchid=$_GET['couch'];
+    $status=$conn->query("UPDATE `couchoffers` SET `status`='$st' WHERE `id`=$id ");
     if($status){
       if($st=="accepted"){
-        $conn->query("UPDATE `wishlists` SET `status`='booked' WHERE `id`=$wishlistid");
+        $conn->query("UPDATE `couches` SET `status`='booked' WHERE `id`=$couchid");
       }
       echo "
       <script>
-        window.location.replace('checkwishlistoffers.php?wishlist=$wishlistid');
+        window.location.replace('checkcouchoffers.php?couch=$couchid');
         alert('Offer {$st}!!');
       </script>";
     }else{
       echo "
       <script>
-        window.location.replace('checkwishlistoffers.php?wishlist=$wishlistid');
+        window.location.replace('checkcouchoffers.php?couch=$couchid');
         alert('Failed to perform action!!');
       </script>";
     }

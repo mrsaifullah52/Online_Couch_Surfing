@@ -33,68 +33,68 @@
   </div>
   
 <?php
-    if(isset($_GET['show'])){
-      if($_GET['show'] == "active"){
-        include 'activewishlist.php';
-      }else if($_GET['show'] == "offers"){
-        ?>
+  if(isset($_GET['show'])){
+    if($_GET['show'] == "active"){
+      include 'activewishlist.php';
+    }else if($_GET['show'] == "offers"){
+      ?>
 
-        <style>
-          .active{
-            color:rgb(83, 225, 230)
-          }
-          .offers{
-            color:rgb(55, 132, 134)
-          }
-        </style>
+      <style>
+        .active{
+          color:rgb(83, 225, 230)
+        }
+        .offers{
+          color:rgb(55, 132, 134)
+        }
+      </style>
 
-        <div class="list">
-          <ul>
-            <?php
-              $sql="SELECT * FROM `wishlistoffers` where `personid`='{$_SESSION['username']}'";
-              $result=$conn->query($sql);
+      <div class="list">
+        <ul>
+          <?php
+            $sql="SELECT * FROM `wishlistoffers` where `personid`='{$_SESSION['username']}'";
+            $result=$conn->query($sql);
 
-              $count=mysqli_fetch_row($result);
-              if($count > 0){
+            $count=mysqli_fetch_row($result);
+            if($count > 0){
 
-                foreach($result as $offer){
-                  echo "
-                    <li>
-                      <div class=\"offerslist\">
-                        <div class=\"offer\">
-                          <h5>Cost: ".$offer['price']." Rupee</h5>
-                          <div>
-                            <p>".$offer['details']."</p>
-                          </div>
+              foreach($result as $offer){
+                echo "
+                  <li>
+                    <div class=\"offerslist\">
+                      <div class=\"offer\">
+                        <h5>Cost: ".$offer['price']." Rupee</h5>
+                        <div>
+                          <p>".$offer['details']."</p>
                         </div>
-                        <div class=\"wish\">";
-
-                        $result2=$conn->query("SELECT * FROM wishlists WHERE `id`= '{$offer['wishlistid']}' ");
-                        $loca=mysqli_fetch_assoc($result2);
-                        
-                          echo "<h5>".$loca['title']."</h5>";
-
-                          echo "
-                          <h4 class=\"title\">Location: ".$loca['city'].", ".$loca['country']."</h4>";
-                        
-                        echo "</div>
                       </div>
-                      <span class=\"date\">{$loca['timestamp']}</span>
-                    </li>
-                  
-                  ";
-                }
+                      <div class=\"wish\">";
 
-              }
+                      $result2=$conn->query("SELECT * FROM wishlists WHERE `id`= '{$offer['wishlistid']}' ");
+                      $loca=mysqli_fetch_assoc($result2);
+                      
+                        echo "<h5>".$loca['title']."</h5>";
+
+                        echo "
+                        <h4 class=\"title\">Location: ".$loca['city'].", ".$loca['country']."</h4>";
+                      
+                      echo "</div>
+                    </div>
+                    <span class=\"date\">{$loca['timestamp']}</span>
+                  </li>
                 
-            ?>
-          </ul>
-        </div>
+                ";
+              }
 
-      <?php
-      }
+            }
+              
+          ?>
+        </ul>
+      </div>
+
+    <?php
     }
-  ?>
+  }
+?>
 
   </div>
 </div>

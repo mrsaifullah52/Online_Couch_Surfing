@@ -19,7 +19,7 @@
           <!-- </a></li> -->
           <li><a href="mycouches.php">Dashboard</a></li>
           <li><a href="wishlist.php?show=active">Wishlists</a></li>
-          <li><a href="couches.php">Couches</a></li>
+          <li><a href="couches.php?show=active">Couches</a></li>
           <li><a href="chat.php">Chat</a></li>
           <li><a href="../logout.php">Log out</a></li>
         </ul>

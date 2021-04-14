@@ -69,3 +69,29 @@
 
 </body>
 </html>
+
+<?php
+if(isset($_GET['del'])){
+  $couchid=$_GET['del'];
+  $username=$_SESSION['username'];
+
+  $sql1="UPDATE `wishlists` SET `status`='unavailable' WHERE `id`=$couchid AND `username`='$username' ";
+  $result=$conn->query($sql1);
+
+  if($result){
+    echo "
+    <script>
+      window.location.replace('mywishlists.php?show=active');
+      alert('Wishlist has been Removed!!');
+    </script>";
+  }else{
+    echo "
+    <script>
+      window.location.replace('mywishlists.php?show=active');
+      alert('Failed to Removed.');
+    </script>";
+  }
+
+}
+
+?>

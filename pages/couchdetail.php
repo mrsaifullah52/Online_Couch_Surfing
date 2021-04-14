@@ -118,18 +118,22 @@
                   <h4>Want to Offer?</h4>
                   <form action="" method="POST">
                     <label for="price">Cost:</label>
+                    
+                    <input type="hidden" name="owner" value="<?php echo $row['username']?>">
                     <input type="text" name="price" placeholder="Enter your Charges" id="price">
 
                     <label for="details">Details:</label>
-                    <textarea name="details" id="details" rows="5" cols="22" placeholder="Enter Extra Details if you have any"></textarea>
+                    <textarea name="details" id="details" rows="5" cols="22" maxlength="255" placeholder="Enter Extra Details if you have any"></textarea>
 
                     <input type="submit" value="Send Offer">
                   </form>
               </div>
             <!-- end condition -->
             <?php
-                }
-              ?>
+              }else{
+                echo"<a href=\"checkcouchoffers.php?couch={$_GET['id']}\">Check Offers</a>";
+              }
+            ?>
           </div>
 
 
@@ -159,71 +163,77 @@
 <?php
 
 if(isset($_GET['book'])){
-  $couchid=$_GET['book'];
-  $username=$_SESSION['username'];
+  // $couchid=$_GET['book'];
+  // $username=$_SESSION['username'];
 
-  $sql1="SELECT `username`, `couchid` from `wishlist` where `username`='$username' AND `couchid`='$couchid' ";
-  $result=$conn->query($sql1);
-  $count=mysqli_num_rows($result);
-  if($count>0){
-    echo "
-    <script>
-      window.location.replace('wishlist.php');
-      alert('Already Exists.');
-    </script>";
-  }else{
-    $sql2="INSERT INTO `wishlist`(`username`, `couchid`) 
-    VALUES ('$username', '$couchid')";
-      if($conn->query($sql2)){
-        echo "
-          <script>
-            window.location.replace('wishlist.php');
-            alert('Added in wishlist');
-          </script>";
-      }else{  
-        echo "
-        <script>
-          window.location.replace('wishlist.php');
-          alert('Failed to Add.');
-        </script>";
-      }
-  }
+  // $sql1="SELECT `username`, `couchid` from `wishlist` where `username`='$username' AND `couchid`='$couchid' ";
+  // $result=$conn->query($sql1);
+  // $count=mysqli_num_rows($result);
+  // if($count>0){
+  //   echo "
+  //   <script>
+  //     window.location.replace('wishlist.php');
+  //     alert('Already Exists.');
+  //   </script>";
+  // }else{
+  //   $sql2="INSERT INTO `wishlist`(`username`, `couchid`) 
+  //   VALUES ('$username', '$couchid')";
+  //     if($conn->query($sql2)){
+  //       echo "
+  //         <script>
+  //           window.location.replace('wishlist.php');
+  //           alert('Added in wishlist');
+  //         </script>";
+  //     }else{  
+  //       echo "
+  //       <script>
+  //         window.location.replace('wishlist.php');
+  //         alert('Failed to Add.');
+  //       </script>";
+  //     }
+  // }
 
-}else if(isset($_GET['booked'])){
-  $couchid=$_GET['booked'];
-  $username=$_SESSION['username'];
+// }else if(isset($_GET['booked'])){
+//   $couchid=$_GET['booked'];
+//   $username=$_SESSION['username'];
 
-  $sql1="DELETE FROM `couches` WHERE `id`='$couchid' AND `username`='$username' ";
-  $result=$conn->query($sql1);
+//   $sql1="DELETE FROM `couches` WHERE `id`='$couchid' AND `username`='$username' ";
+//   $result=$conn->query($sql1);
 
-  if($result){
-    echo "
-    <script>
-      window.location.replace('couchdetail.php?id=".$_GET['id']."');
-      alert('Couch has been Deleted!!');
-    </script>";
-  }else{
-    echo "
-    <script>
-      window.location.replace('couches.php');
-      alert('Failed to Delete.');
-    </script>";
-  }
+//   if($result){
+//     echo "
+//     <script>
+//       window.location.replace('couchdetail.php?id=".$_GET['id']."');
+//       alert('Couch has been Deleted!!');
+//     </script>";
+//   }else{
+//     echo "
+//     <script>
+//       window.location.replace('couches.php');
+//       alert('Failed to Delete.');
+//     </script>";
+//   }
 }
 
 // send offer
 if(isset($_POST['price']) && isset($_POST['details']) ){
   $price=$_POST['price'];
   $details=$_POST['details'];
+  $owner=$_POST['owner'];
 
-  $sql="INSERT INTO `wishlistoffers` (`personid`,`wishlistid`, `price`, `details`) 
-        VALUES( '{$_SESSION['username']}', '{$_GET['id']}', '$price', '$details')";
+  $sql="INSERT INTO `couchoffers` (`personid`,`couchid`, `owner`, `price`, `details`) 
+        VALUES( '{$_SESSION['username']}', '{$_GET['id']}', '$owner', '$price', '$details')";
 
   $result=$conn->query($sql);
   if($result){
     echo "
     <script>
       alert('Your offer has been sent!!');
+    </script>";
+  }else{
+    echo "
+    <script>
+      alert('Failed to send your offer!!');
     </script>";
   }
 
