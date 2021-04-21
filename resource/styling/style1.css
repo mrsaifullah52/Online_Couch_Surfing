@@ -827,7 +827,7 @@ margin: 0px 15px;
   display: inline-block;
   text-align: center;
   position: absolute;
-  right: 0;
+  /* right: 0; */
   background-color: #fff;
   color: rgb(83, 225, 230);
 }
@@ -1024,7 +1024,7 @@ font-size: 26px;
 color: #fff;
 }
 
-.wishlists .date{
+.couches .list .date{
   position: absolute;
   right: 20px;
   top: 15px;

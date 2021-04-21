@@ -58,9 +58,17 @@
               if($count > 0){
 
                 foreach($result as $offer){
+                  echo "<li>";
+
+                  if($offer['status'] == "accepted"){
+                    echo "<div class='offerslist' style='border:5px solid green;'>";
+                  }else if($offer['status'] == "looking"){
+                    echo "<div class=\"offerslist\" style=\"border:5px solid skyblue;\">";
+                  }else{
+                    echo "<div class=\"offerslist\" style=\"border:5px solid red;\">";
+                  }
+  
                   echo "
-                    <li>
-                      <div class=\"offerslist\">
                         <div class=\"offer\">
                           <h5>Cost: ".$offer['price']." Rupee</h5>
                           <div>
@@ -99,62 +107,3 @@
   </div>
 </body>
 </html>
-
-<?php
-
-// if(isset($_GET['wishlist'])){
-  // $couchid=$_GET['wishlist'];
-  // $username=$_SESSION['username'];
-
-  // $sql1="SELECT `username`, `couchid` from `wishlist` where `username`='$username' AND `couchid`='$couchid' ";
-  // $result=$conn->query($sql1);
-  // $count=mysqli_num_rows($result);
-  // if($count>0){
-  //   echo "
-  //   <script>
-  //     window.location.replace('couches.php');
-  //     alert('Already Exists.');
-  //   </script>";
-  // }else{
-  //   $sql2="INSERT INTO `wishlist`(`username`, `couchid`) 
-  //   VALUES ('$username', '$couchid')";
-  //     if($conn->query($sql2)){
-  //       echo "
-  //         <script>
-  //           window.location.replace('couches.php');
-  //           alert('Added in wishlist');
-  //         </script>";
-  //     }else{  
-  //       echo "
-  //       <script>
-  //         window.location.replace('couches.php');
-  //         alert('Failed to Add.');
-  //       </script>";
-  //     }
-  // }
-
-// }else if(isset($_GET['del'])){
-//   $couchid=$_GET['del'];
-//   $username=$_SESSION['username'];
-
-//   $sql1="UPDATE `couches` SET `status`='unavailable' WHERE `id`='$couchid' AND `username`='$username' ";
-//   $result=$conn->query($sql1);
-
-//   if($result){
-//     echo "
-//     <script>
-//       window.location.replace('couches.php?show=active');
-//       alert('Couch has been Deleted!!');
-//     </script>";
-//   }else{
-//     echo "
-//     <script>
-//       window.location.replace('couches.php?show=active');
-//       alert('Failed to Delete.');
-//     </script>";
-//   }
-
-// }
-
-
-?>

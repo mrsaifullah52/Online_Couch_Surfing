@@ -74,10 +74,12 @@
           <h4>Cost: ".$offe['price']." Rupee</h4>
           <p>".$offe['details']."</p>";
           
-          $sql1="SELECT `fname`,`lname` FROM `users` WHERE `username`='{$offe['personid']}'";
+          $sql1="SELECT `username`,`fname`,`lname` FROM `users` WHERE `username`='{$offe['personid']}'";
           $result1=$con->query($sql1);
           $name=mysqli_fetch_assoc($result1);
-          echo "<span>Sent By: ".$name['fname'] ." ". $name['lname']."</span>";
+          echo "<span>Sent By: <a href=\"chat.php?touser=".$name['username']."\" style='background:transparent;color:#000'>";
+          echo $name['fname'] ." ". $name['lname'];
+          echo "</a></span>";
 
           echo "</div>
           <div class=\"actions\">";

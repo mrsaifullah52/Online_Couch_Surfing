@@ -22,19 +22,11 @@
   include '../config/db.php';
   include '../components/header.php';
 
-  // if(isset($_GET['id'])){
     $sql1="SELECT `username`, `title`, `startdate`, `enddate`, `description`,
                 `city`, `country`, `latitude`, `longitude`, `timestamp` 
                 FROM `wishlists` WHERE `id`='".$_GET['id']."'";
     $result1 = mysqli_query($conn, $sql1);
     $row = mysqli_fetch_array($result1);
-  // }else{
-  //   echo "
-  //   <script>
-  //     window.location.replace('dashboard.php');
-  //     alert('Link to this Couch has been Broken!!');
-  //   </script>";
-  // }
 ?>
 
 

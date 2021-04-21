@@ -58,9 +58,17 @@
             if($count > 0){
 
               foreach($result as $offer){
+                echo "<li>";
+
+                if($offer['status'] == "accepted"){
+                  echo "<div class='offerslist' style='border:5px solid green;'>";
+                }else if($offer['status'] == "looking"){
+                  echo "<div class=\"offerslist\" style=\"border:5px solid skyblue;\">";
+                }else{
+                  echo "<div class=\"offerslist\" style=\"border:5px solid red;\">";
+                }
+
                 echo "
-                  <li>
-                    <div class=\"offerslist\">
                       <div class=\"offer\">
                         <h5>Cost: ".$offer['price']." Rupee</h5>
                         <div>

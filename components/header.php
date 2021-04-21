@@ -10,13 +10,11 @@
 
       <div class="menu">
         <ul>
-          <!-- <li><a href="profile.php"> -->
             <?php 
             if( !(isset($_SESSION['name']) ) ){
               echo "<script>window.location.replace('../index.php')</script>";
             }
             ?>
-          <!-- </a></li> -->
           <li><a href="mycouches.php">Dashboard</a></li>
           <li><a href="wishlist.php?show=active">Wishlists</a></li>
           <li><a href="couches.php?show=active">Couches</a></li>

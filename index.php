@@ -28,7 +28,6 @@ if(isset($_SESSION['username'])){
                 <label for="Password">Password</label>
                 <input id="password" type="Password" name="Password" placeholder="********" required autocomplete="off">
         
-                <!-- <a href="forgetpassword.html">Forget password?</a> -->
                 <input type="submit" value="Sign-in">
                 <input type="button" value="Create New Account" onclick="window.location.replace('pages/sign-up.html')">
             </form>    

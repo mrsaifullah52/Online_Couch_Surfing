@@ -161,60 +161,6 @@
 
 
 <?php
-
-if(isset($_GET['book'])){
-  // $couchid=$_GET['book'];
-  // $username=$_SESSION['username'];
-
-  // $sql1="SELECT `username`, `couchid` from `wishlist` where `username`='$username' AND `couchid`='$couchid' ";
-  // $result=$conn->query($sql1);
-  // $count=mysqli_num_rows($result);
-  // if($count>0){
-  //   echo "
-  //   <script>
-  //     window.location.replace('wishlist.php');
-  //     alert('Already Exists.');
-  //   </script>";
-  // }else{
-  //   $sql2="INSERT INTO `wishlist`(`username`, `couchid`) 
-  //   VALUES ('$username', '$couchid')";
-  //     if($conn->query($sql2)){
-  //       echo "
-  //         <script>
-  //           window.location.replace('wishlist.php');
-  //           alert('Added in wishlist');
-  //         </script>";
-  //     }else{  
-  //       echo "
-  //       <script>
-  //         window.location.replace('wishlist.php');
-  //         alert('Failed to Add.');
-  //       </script>";
-  //     }
-  // }
-
-// }else if(isset($_GET['booked'])){
-//   $couchid=$_GET['booked'];
-//   $username=$_SESSION['username'];
-
-//   $sql1="DELETE FROM `couches` WHERE `id`='$couchid' AND `username`='$username' ";
-//   $result=$conn->query($sql1);
-
-//   if($result){
-//     echo "
-//     <script>
-//       window.location.replace('couchdetail.php?id=".$_GET['id']."');
-//       alert('Couch has been Deleted!!');
-//     </script>";
-//   }else{
-//     echo "
-//     <script>
-//       window.location.replace('couches.php');
-//       alert('Failed to Delete.');
-//     </script>";
-//   }
-}
-
 // send offer
 if(isset($_POST['price']) && isset($_POST['details']) ){
   $price=$_POST['price'];

@@ -64,19 +64,6 @@
 
       ?>
     </ul>
-  
-      <!-- <div class="reservations"> -->
-        <!-- <ul>
-          <li>
-            <div class="item">
-              <h5>5000 Rupees</h5>
-              <p>Lorem ipsum  perferendis illum vero delectus doloremque tempore erum architecto, eum, facilis quidem consequatur?</p>
-            </div>
-          </li>
-          <li></li>
-          <li></li>
-        </ul>     -->
-      <!-- </div> -->
     </div>
 
   </div>
