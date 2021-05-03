@@ -130,19 +130,30 @@ if(isset($_POST['price']) && isset($_POST['details']) ){
   $details=$_POST['details'];
   $owner=$_POST['owner'];
 
-  $sql="INSERT INTO `wishlistoffers` (`personid`, `owner`, `wishlistid`, `price`, `details`) 
-        VALUES( '{$_SESSION['username']}', '$owner', '{$_GET['id']}', '$price', '$details')";
+  $duplication=$conn->query("SELECT * FROM `wishlistoffers` WHERE (`personid`='{$_SESSION['username']}' AND `wishlistid`='{$_GET['id']}')
+                AND `owner`='$owner' ");
+  $duplirows =mysqli_num_rows($duplication);
+  if($duplirows<1){
 
-  $result=$conn->query($sql);
-  if($result){
-    echo "
-    <script>
-      alert('Your offer has been sent!!');
-    </script>";
+    $sql="INSERT INTO `wishlistoffers` (`personid`, `owner`, `wishlistid`, `price`, `details`) 
+          VALUES( '{$_SESSION['username']}', '$owner', '{$_GET['id']}', '$price', '$details')";
+      $result=$conn->query($sql);
+      if($result){
+        echo "
+        <script>
+          alert('Your offer has been sent!!');
+        </script>";
+      }else{
+        echo "
+        <script>
+          alert('Failed to send your offer!!');
+        </script>";
+      }
+
   }else{
     echo "
     <script>
-      alert('Failed to send your offer!!');
+      alert(\"You can't send your offer again!!\");
     </script>";
   }
 

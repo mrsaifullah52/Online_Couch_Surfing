@@ -12,7 +12,14 @@
      <!-- jquery -->  
   <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+  <style>
+    .active{
+      color:rgb(83, 225, 230)
+    }
+    .offers{
+      color:rgb(55, 132, 134)
+    }
+  </style>
 </head>
 <body>
 
@@ -29,24 +36,15 @@
        <a href="wishlist.php?show=active" class="active">Active</a>
      | <a href="wishlist.php?show=offers" class="offers">Sent offers</a>
     </h5>
-  
   </div>
   
 <?php
   if(isset($_GET['show'])){
     if($_GET['show'] == "active"){
+      // including active list page
       include 'activewishlist.php';
     }else if($_GET['show'] == "offers"){
       ?>
-
-      <style>
-        .active{
-          color:rgb(83, 225, 230)
-        }
-        .offers{
-          color:rgb(55, 132, 134)
-        }
-      </style>
 
       <div class="list">
         <ul>

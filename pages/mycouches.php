@@ -20,7 +20,10 @@
 
 <div class="dashboard">
   <div class="list">
-    <h5><a href="mycouches.php" style="color:rgb(55, 132, 134)">My Couches</a> | <a href="mywishlists.php" style="color:rgb(83, 225, 230)">My Wishlists</a></h5>
+      <h5>
+        <a href="mycouches.php" style="color:rgb(55, 132, 134)">My Couches</a> | 
+        <a href="mywishlists.php" style="color:rgb(83, 225, 230)">My Wishlists</a>
+      </h5>
       
     <div class="containerr">
     <ul>
@@ -55,7 +58,7 @@
                 delete_forever
               </span>
             </a>';
-          } 
+          }
         echo '</li>';
         }
       }else{

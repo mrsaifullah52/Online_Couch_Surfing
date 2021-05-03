@@ -8,19 +8,19 @@
 <!-- style sheets -->
   <link rel="stylesheet" href="../resource/styling/style1.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+  rel="stylesheet">
 
-      <style>
-        .looking{
-          border: 5px solid skyblue;
-        }
-        .accepted{
-          border: 5px solid green;
-        }
-        .reject{
-          border: 5px solid red;
-        }
-      </style>
+  <style>
+    .looking{
+      border: 5px solid skyblue;
+    }
+    .accepted{
+      border: 5px solid green;
+    }
+    .reject{
+      border: 5px solid red;
+    }
+  </style>
 
 </head>
 <body>
@@ -39,7 +39,8 @@
       $username=$_SESSION['username'];
       if(isset($_GET['wishlist'])){
         $id=$_GET['wishlist'];
-        $sql="SELECT * FROM `wishlistoffers` WHERE `id`={$id} AND `owner`='{$username}' ";
+        
+        $sql="SELECT * FROM `wishlistoffers` WHERE `wishlistid`={$id} AND `owner`='{$username}' ";
         $result=$conn->query($sql);
         $count=mysqli_fetch_row($result);
         if($count>0){

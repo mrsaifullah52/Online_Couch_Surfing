@@ -112,6 +112,9 @@
 
     <!-- jquery for dynamic city names -->
     <script>
+
+
+    
       $(function () {
         $.ajax({
         type: 'GET',
@@ -126,6 +129,13 @@
           }
         });
       });
+
+
+
+
+
+
+
 
       $("#country").on("change",function(e){
         $("#city").empty();

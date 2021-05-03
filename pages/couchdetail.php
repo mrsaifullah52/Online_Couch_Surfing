@@ -167,19 +167,30 @@ if(isset($_POST['price']) && isset($_POST['details']) ){
   $details=$_POST['details'];
   $owner=$_POST['owner'];
 
-  $sql="INSERT INTO `couchoffers` (`personid`,`couchid`, `owner`, `price`, `details`) 
-        VALUES( '{$_SESSION['username']}', '{$_GET['id']}', '$owner', '$price', '$details')";
+  $duplication=$conn->query("SELECT * FROM `couchoffers` WHERE (`personid`='{$_SESSION['username']}' AND `couchid`='{$_GET['id']}')
+                AND `owner`='$owner' ");
+  $duplirows =mysqli_num_rows($duplication);
+  if($duplirows<1){
+    $sql="INSERT INTO `couchoffers` (`personid`,`couchid`, `owner`, `price`, `details`) 
+    VALUES( '{$_SESSION['username']}', '{$_GET['id']}', '$owner', '$price', '$details')";
 
-  $result=$conn->query($sql);
-  if($result){
+    $result=$conn->query($sql);
+    if($result){
     echo "
     <script>
       alert('Your offer has been sent!!');
     </script>";
-  }else{
+    }else{
     echo "
     <script>
       alert('Failed to send your offer!!');
+    </script>";
+    }
+
+  }else{
+    echo "
+    <script>
+      alert(\"You can't send your offer again!!\");
     </script>";
   }
 
